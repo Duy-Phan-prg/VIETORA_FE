@@ -255,32 +255,38 @@
   height: 80px;
   z-index: 1;
   pointer-events: none;
-  animation: catPeek 8.5s linear infinite;
+  animation: catPeek 22.5s linear infinite;
 }
 
 @keyframes catPeek {
-  /* Đang hiện — nghỉ chút rồi chìm xuống */
+  /* Ẩn — bắt đầu trồi chậm */
   0% {
-    transform: translateX(-50%) translateY(22px);
+    transform: translateX(-50%) translateY(105px);
     animation-timing-function: ease-in;
   }
-  /* Chìm nhanh sau bảng */
-  6% {
-    transform: translateX(-50%) translateY(105px);
-    animation-timing-function: linear;
-  }
-  /* Ẩn 5 giây */
-  65% {
-    transform: translateX(-50%) translateY(105px);
-    animation-timing-function: ease-in; /* bắt đầu chậm */
-  }
-  /* Trồi lên — chậm rồi nhanh dần */
-  80% {
+  /* Tăng tốc */
+  4% {
     transform: translateX(-50%) translateY(60px);
     animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
   }
-  100% {
+  /* Tới đỉnh */
+  9% {
     transform: translateX(-50%) translateY(22px);
+    animation-timing-function: linear;
+  }
+  /* Giữ 3 giây */
+  22% {
+    transform: translateX(-50%) translateY(22px);
+    animation-timing-function: ease-in;
+  }
+  /* Chìm nhanh */
+  24% {
+    transform: translateX(-50%) translateY(105px);
+    animation-timing-function: linear;
+  }
+  /* Núp sau card 17 giây :))) */
+  100% {
+    transform: translateX(-50%) translateY(105px);
   }
 }
 
