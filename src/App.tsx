@@ -62,9 +62,31 @@ function App() {
         {/* Right — UI Mockup */}
         <div className="hero-right">
           <div className="mockup-wrapper">
-            <div className="ai-label">AI FEEDBACK</div>
 
             <div className="mockup-card">
+              {/* AI FEEDBACK badge — relative to card */}
+              <div className="ai-label">AI FEEDBACK</div>
+
+              {/* CSS Cat sitting on card */}
+              <div className="cat-container">
+                <div className="cat-ear cat-ear-left"></div>
+                <div className="cat-ear cat-ear-right"></div>
+                <div className="cat-head">
+                  <div className="cat-eye cat-eye-left">
+                    <div className="cat-pupil"></div>
+                  </div>
+                  <div className="cat-eye cat-eye-right">
+                    <div className="cat-pupil"></div>
+                  </div>
+                  <div className="cat-whisker cat-whisker-left cat-w1"></div>
+                  <div className="cat-whisker cat-whisker-left cat-w2"></div>
+                  <div className="cat-whisker cat-whisker-left cat-w3"></div>
+                  <div className="cat-whisker cat-whisker-right cat-w1"></div>
+                  <div className="cat-whisker cat-whisker-right cat-w2"></div>
+                  <div className="cat-whisker cat-whisker-right cat-w3"></div>
+                </div>
+              </div>
+
               <div className="writing-lines">
                 <div className="wl wl-100"></div>
                 <div className="wl wl-85"></div>
