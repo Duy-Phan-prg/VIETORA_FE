@@ -1,3 +1,36 @@
+/* ─── Language Toggle ────────────────────────────────── */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  border: 2px solid #0a0a0a;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.lang-btn {
+  padding: 6px 11px;
+  background: transparent;
+  color: #6b7280;
+  border: none;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1;
+}
+
+.lang-btn.active {
+  background: #0a0a0a;
+  color: #fff;
+}
+
+.lang-btn:hover:not(.active) {
+  background: #f3f4f6;
+  color: #0a0a0a;
+}
+
 /* ─── Navbar ─────────────────────────────────────────── */
 .navbar {
   display: flex;

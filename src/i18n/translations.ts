@@ -1,0 +1,86 @@
+export type Lang = 'en' | 'vi';
+
+export const translations = {
+  en: {
+    nav: {
+      features: 'Features',
+      pricing: 'Pricing',
+      blog: 'Blog',
+      community: 'Community',
+      signIn: 'Sign in',
+      getStarted: 'Get Started Free',
+    },
+    home: {
+      badge: 'NEW: IELTS WRITING 2.0',
+      titleLine1: 'Master IELTS with',
+      titleLine2: 'AI Precision.',
+      subtitle:
+        'Playful style, serious results. The most advanced AI workspace designed specifically for ambitious students aiming for Band 8.0+.',
+      cta1: 'Get Started for Free',
+      cta2: 'View Demo →',
+      socialProof: 'Trusted by',
+      socialProofBold: '12,000+',
+      socialProofSuffix: 'Band 8+ achievers',
+      aiLabel: 'AI FEEDBACK',
+      fbQuote:
+        '"Your vocabulary in paragraph 2 is excellent, but consider using a more formal transition here."',
+      chatTitle: 'Vietora · Band 8 Feedback',
+      chatPlaceholder: 'Ask Vietora about your essay…',
+    },
+    login: {
+      title: 'Welcome back to Vietora',
+      subtitle: 'The system is ready for your learning session.',
+      usernameLabel: 'Username',
+      usernamePlaceholder: 'Enter your username...',
+      passwordLabel: 'Password',
+      forgot: 'Forgot?',
+      loginBtn: 'Login',
+      orWith: 'OR CONTINUE WITH',
+      newToGrid: 'New to the grid?',
+      initAccount: 'Initialize Account',
+      systemStatus: 'SYSTEM_STATUS: OK',
+      systemMsg: 'Secure node detected. Awaiting authentication parameters for session 8492-X.',
+    },
+  },
+  vi: {
+    nav: {
+      features: 'Tính năng',
+      pricing: 'Bảng giá',
+      blog: 'Blog',
+      community: 'Cộng đồng',
+      signIn: 'Đăng nhập',
+      getStarted: 'Bắt đầu miễn phí',
+    },
+    home: {
+      badge: 'MỚI: IELTS WRITING 2.0',
+      titleLine1: 'Chinh phục IELTS',
+      titleLine2: 'với AI chính xác.',
+      subtitle:
+        'Phong cách vui tươi, kết quả nghiêm túc. Không gian làm việc AI tiên tiến nhất được thiết kế riêng cho những học viên tham vọng hướng tới Band 8.0+.',
+      cta1: 'Bắt đầu miễn phí',
+      cta2: 'Xem Demo →',
+      socialProof: 'Được tin dùng bởi',
+      socialProofBold: '12,000+',
+      socialProofSuffix: 'học viên đạt Band 8+',
+      aiLabel: 'PHẢN HỒI AI',
+      fbQuote:
+        '"Từ vựng của bạn trong đoạn 2 rất xuất sắc, nhưng hãy cân nhắc sử dụng liên từ trang trọng hơn ở đây."',
+      chatTitle: 'Vietora · Phản hồi Band 8',
+      chatPlaceholder: 'Hỏi Vietora về bài luận của bạn…',
+    },
+    login: {
+      title: 'Chào mừng trở lại Vietora',
+      subtitle: 'Hệ thống đã sẵn sàng cho buổi học của bạn.',
+      usernameLabel: 'Tên đăng nhập',
+      usernamePlaceholder: 'Nhập tên đăng nhập của bạn...',
+      passwordLabel: 'Mật khẩu',
+      forgot: 'Quên mật khẩu?',
+      loginBtn: 'Đăng nhập',
+      orWith: 'HOẶC TIẾP TỤC VỚI',
+      newToGrid: 'Mới đến?',
+      initAccount: 'Khởi tạo tài khoản',
+      systemStatus: 'TRẠNG_THÁI_HỆ_THỐNG: OK',
+      systemMsg: 'Đã phát hiện nút bảo mật. Đang chờ thông số xác thực cho phiên 8492-X.',
+    },
+  },
+} as const;
