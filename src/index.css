@@ -31,6 +31,11 @@ body {
   overflow-x: hidden;
 }
 
+/* Unify all elements to Inter */
+*, input, button, textarea, select {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
 #root {
   min-height: 100vh;
 }

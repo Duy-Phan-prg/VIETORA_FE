@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -15,6 +15,7 @@ function GoogleIcon() {
 
 export default function LoginPage() {
   const { t } = useLanguage();
+  const navigate = useNavigate();
 
   return (
     <div className="bg-white text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden">
@@ -39,7 +40,7 @@ export default function LoginPage() {
               <p className="text-secondary text-body-sm">{t.login.subtitle}</p>
             </div>
 
-            <form className="space-y-stack-md" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-stack-md" onSubmit={(e) => { e.preventDefault(); navigate('/dashboard'); }}>
               {/* Username */}
               <div className="space-y-1">
                 <label className="font-label-code text-label-code uppercase tracking-wider block">

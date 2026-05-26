@@ -14,7 +14,7 @@
   border: none;
   font-size: 12px;
   font-weight: 700;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', sans-serif;
   letter-spacing: 0.03em;
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
@@ -393,6 +393,55 @@
 
 .cat-whisker-right.cat-w1 { transform: rotate(-10deg); }
 .cat-whisker-right.cat-w3 { transform: rotate(10deg);  }
+
+/* ─── Floating Cat (Dashboard) ───────────────────────── */
+.cat-float-wrapper {
+  position: fixed;
+  bottom: 0;
+  right: 64px;
+  z-index: 50;
+  cursor: pointer;
+  width: 140px;
+  height: 80px;
+  transform: translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cat-float-wrapper:hover {
+  transform: translateY(0px);
+}
+
+.cat-float-wrapper .cat-tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) rotate(-10deg);
+  background: #111;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 8px 18px;
+  border-radius: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  letter-spacing: 0.02em;
+}
+
+.cat-float-wrapper:hover .cat-tooltip {
+  opacity: 1;
+}
+
+.cat-float-wrapper .cat-container {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  animation: none;
+  width: 140px;
+  height: 80px;
+}
 
 /* ─── Hero Right ─────────────────────────────────────── */
 .hero-right {

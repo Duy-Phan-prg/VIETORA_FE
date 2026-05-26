@@ -35,6 +35,7 @@ module.exports = {
         'on-secondary': '#ffffff',
         'surface-container-highest': '#e2e2e7',
         'ai-accent': '#A555EE',
+        'ai-purple': '#A555EE',
       },
       borderRadius: {
         DEFAULT: '0.25rem',
@@ -51,13 +52,13 @@ module.exports = {
         gutter: '1.5rem',
       },
       fontFamily: {
-        'body-sm': ['Inter', 'sans-serif'],
-        'display-lg': ['Montserrat', 'sans-serif'],
-        'headline-sm': ['Montserrat', 'sans-serif'],
-        'headline-md': ['Montserrat', 'sans-serif'],
-        'body-md': ['Inter', 'sans-serif'],
-        'label-code': ['"JetBrains Mono"', 'monospace'],
-        'body-lg': ['Inter', 'sans-serif'],
+        'body-sm':    ['Inter', 'sans-serif'],
+        'display-lg': ['Inter', 'sans-serif'],
+        'headline-sm':['Inter', 'sans-serif'],
+        'headline-md':['Inter', 'sans-serif'],
+        'body-md':    ['Inter', 'sans-serif'],
+        'label-code': ['Inter', 'sans-serif'],
+        'body-lg':    ['Inter', 'sans-serif'],
       },
       fontSize: {
         'body-sm': ['14px', { lineHeight: '20px', fontWeight: '400' }],
