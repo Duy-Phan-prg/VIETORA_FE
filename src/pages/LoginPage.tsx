@@ -40,7 +40,7 @@ export default function LoginPage() {
               <p className="text-secondary text-body-sm">{t.login.subtitle}</p>
             </div>
 
-            <form className="space-y-stack-md" onSubmit={(e) => { e.preventDefault(); navigate('/dashboard'); }}>
+            <form className="space-y-stack-md" onSubmit={(e) => { e.preventDefault(); navigate('/goiyai'); }}>
               {/* Username */}
               <div className="space-y-1">
                 <label className="font-label-code text-label-code uppercase tracking-wider block">

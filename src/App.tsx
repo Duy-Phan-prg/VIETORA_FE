@@ -3,7 +3,13 @@ import './App.css';
 import { LanguageProvider } from './contexts/LanguageContext';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
-import DashboardPage from './pages/DashboardPage';
+import DashboardLayout from './pages/DashboardLayout';
+import GoiYAIPage from './pages/GoiYAIPage';
+import TiendoPage from './pages/TiendoPage';
+import LuyendePage from './pages/LuyendePage';
+import GhiChuPage from './pages/GhiChuPage';
+import LotrinhPage from './pages/LotrinhPage';
+import BanBePage from './pages/BanBePage';
 
 export default function App() {
   return (
@@ -12,7 +18,14 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route element={<DashboardLayout />}>
+            <Route path="/goiyai" element={<GoiYAIPage />} />
+            <Route path="/tiendo" element={<TiendoPage />} />
+            <Route path="/luyende" element={<LuyendePage />} />
+            <Route path="/ghichu" element={<GhiChuPage />} />
+            <Route path="/lotrinh" element={<LotrinhPage />} />
+            <Route path="/banbe" element={<BanBePage />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </LanguageProvider>
