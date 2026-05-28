@@ -8,7 +8,7 @@ export default function Header() {
     <nav className="navbar">
       <Link to="/" className="nav-logo">
         <div className="logo-mark">V</div>
-        <span>Vietora</span>
+        <span>Vitora</span>
       </Link>
 
       <div className="nav-links">

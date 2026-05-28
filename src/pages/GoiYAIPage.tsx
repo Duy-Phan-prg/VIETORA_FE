@@ -23,7 +23,7 @@ const SUGGESTIONS = [
 ];
 
 const CHAT_HISTORY = [
-  { role: 'ai', text: 'Xin chào! Mình là Mori 🐱 — trợ lý AI của Vietora. Hôm nay bạn muốn luyện kỹ năng gì?' },
+  { role: 'ai', text: 'Xin chào! Mình là Mori 🐱 — trợ lý AI của Vitora. Hôm nay bạn muốn luyện kỹ năng gì?' },
   { role: 'user', text: 'Cho mình vài gợi ý để cải thiện Writing Task 2.' },
   { role: 'ai', text: 'Dựa trên lịch sử luyện tập, bạn đang ở Band 6.5. Để lên 7.0, mình gợi ý: (1) Luyện viết topic sentence rõ ràng hơn, (2) Dùng cohesive devices đa dạng, (3) Tránh lặp từ — dùng paraphrase nhiều hơn nhé!' },
 ];

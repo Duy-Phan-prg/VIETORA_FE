@@ -24,11 +24,11 @@ export const translations = {
       aiLabel: 'AI FEEDBACK',
       fbQuote:
         '"Your vocabulary in paragraph 2 is excellent, but consider using a more formal transition here."',
-      chatTitle: 'Vietora · Band 8 Feedback',
-      chatPlaceholder: 'Ask Vietora about your essay…',
+      chatTitle: 'Vitora · Band 8 Feedback',
+      chatPlaceholder: 'Ask Vitora about your essay…',
     },
     login: {
-      title: 'Welcome back to Vietora',
+      title: 'Welcome back to Vitora',
       subtitle: 'The system is ready for your learning session.',
       usernameLabel: 'Username',
       usernamePlaceholder: 'Enter your username...',
@@ -65,11 +65,11 @@ export const translations = {
       aiLabel: 'PHẢN HỒI AI',
       fbQuote:
         '"Từ vựng của bạn trong đoạn 2 rất xuất sắc, nhưng hãy cân nhắc sử dụng liên từ trang trọng hơn ở đây."',
-      chatTitle: 'Vietora · Phản hồi Band 8',
-      chatPlaceholder: 'Hỏi Vietora về bài luận của bạn…',
+      chatTitle: 'Vitora · Phản hồi Band 8',
+      chatPlaceholder: 'Hỏi Vitora về bài luận của bạn…',
     },
     login: {
-      title: 'Chào mừng trở lại Vietora',
+      title: 'Chào mừng trở lại Vitora',
       subtitle: 'Hệ thống đã sẵn sàng cho buổi học của bạn.',
       usernameLabel: 'Tên đăng nhập',
       usernamePlaceholder: 'Nhập tên đăng nhập của bạn...',
