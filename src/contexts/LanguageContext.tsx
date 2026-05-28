@@ -3,10 +3,12 @@ import type { ReactNode } from 'react';
 import { translations } from '../i18n/translations';
 import type { Lang } from '../i18n/translations';
 
+type TranslationShape = typeof translations.en | typeof translations.vi;
+
 interface LanguageContextType {
   lang: Lang;
   setLang: (l: Lang) => void;
-  t: typeof translations.en;
+  t: TranslationShape;
 }
 
 const LanguageContext = createContext<LanguageContextType>({

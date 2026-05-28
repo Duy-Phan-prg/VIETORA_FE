@@ -23,12 +23,12 @@ const SUGGESTIONS = [
 ];
 
 const CHAT_HISTORY = [
-  { role: 'ai', text: 'Xin chào! Mình là Mori 🐱 — trợ lý AI của Vitora. Hôm nay bạn muốn luyện kỹ năng gì?' },
+  { role: 'ai',   text: 'Xin chào! Mình là Mori 🐱 — trợ lý AI của Vitora. Hôm nay bạn muốn luyện kỹ năng gì?' },
   { role: 'user', text: 'Cho mình vài gợi ý để cải thiện Writing Task 2.' },
-  { role: 'ai', text: 'Dựa trên lịch sử luyện tập, bạn đang ở Band 6.5. Để lên 7.0, mình gợi ý: (1) Luyện viết topic sentence rõ ràng hơn, (2) Dùng cohesive devices đa dạng, (3) Tránh lặp từ — dùng paraphrase nhiều hơn nhé!' },
+  { role: 'ai',   text: 'Dựa trên lịch sử luyện tập, bạn đang ở Band 6.5. Để lên 7.0, mình gợi ý: (1) Luyện viết topic sentence rõ ràng hơn, (2) Dùng cohesive devices đa dạng, (3) Tránh lặp từ — dùng paraphrase nhiều hơn nhé!' },
 ];
 
-export default function GoiYAIPage() {
+export default function AITipsPage() {
   return (
     <div className="space-y-6">
 
@@ -68,7 +68,6 @@ export default function GoiYAIPage() {
 
         {/* Right: chat with Mori */}
         <div className="bg-white border border-outline-variant rounded-xl flex flex-col" style={{ height: '480px' }}>
-          {/* Chat header */}
           <div className="flex items-center gap-3 px-5 py-4 border-b border-outline-variant">
             <div className="w-8 h-8 bg-surface-container rounded-full flex items-center justify-center border border-outline-variant">
               <span className="material-symbols-outlined text-primary" style={{ fontSize: '16px' }}>smart_toy</span>
@@ -83,7 +82,6 @@ export default function GoiYAIPage() {
             </div>
           </div>
 
-          {/* Messages */}
           <div className="flex-1 overflow-y-auto px-5 py-4 space-y-4">
             {CHAT_HISTORY.map(({ role, text }, i) => (
               <div key={i} className={`flex ${role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -103,7 +101,6 @@ export default function GoiYAIPage() {
             ))}
           </div>
 
-          {/* Input */}
           <div className="px-4 py-3 border-t border-outline-variant">
             <div className="flex items-center gap-2 bg-surface-container rounded-xl px-4 py-2.5">
               <input

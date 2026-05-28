@@ -11,12 +11,12 @@ const WEAKNESSES = [
 ];
 
 const RECENT_TESTS = [
-  { name: 'IELTS Listening Practice Test #12', date: '24 Th10, 2023', score: '8.5', done: true },
-  { name: 'Cambridge 18 - Reading Test 1',     date: '22 Th10, 2023', score: '7.0', done: true },
+  { name: 'IELTS Listening Practice Test #12', date: '24 Th10, 2023', score: '8.5', done: true  },
+  { name: 'Cambridge 18 - Reading Test 1',     date: '22 Th10, 2023', score: '7.0', done: true  },
   { name: 'IELTS Writing Task 2 - Education',  date: '20 Th10, 2023', score: '6.5', done: false },
 ];
 
-export default function TiendoPage() {
+export default function ProgressPage() {
   return (
     <div className="space-y-6">
 

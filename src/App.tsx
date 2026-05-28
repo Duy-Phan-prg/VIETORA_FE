@@ -1,16 +1,18 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './App.css';
+import './styles/app.css';
 import { LanguageProvider } from './contexts/LanguageContext';
+
+import DashboardLayout from './layouts/DashboardLayout';
+
 import HomePage      from './pages/HomePage';
 import LoginPage     from './pages/LoginPage';
-import DashboardLayout from './pages/DashboardLayout';
 import DashboardPage from './pages/DashboardPage';
-import GoiYAIPage    from './pages/GoiYAIPage';
-import TiendoPage    from './pages/TiendoPage';
-import LuyendePage   from './pages/LuyendePage';
-import GhiChuPage    from './pages/GhiChuPage';
-import LotrinhPage   from './pages/LotrinhPage';
-import BanBePage     from './pages/BanBePage';
+import AITipsPage    from './pages/AITipsPage';
+import PracticePage  from './pages/PracticePage';
+import ProgressPage  from './pages/ProgressPage';
+import NotesPage     from './pages/NotesPage';
+import RoadmapPage   from './pages/RoadmapPage';
+import FriendsPage   from './pages/FriendsPage';
 import NotFoundPage  from './pages/NotFoundPage';
 
 export default function App() {
@@ -23,12 +25,12 @@ export default function App() {
 
           <Route element={<DashboardLayout />}>
             <Route path="/dashboard" element={<DashboardPage />} />
-            <Route path="/goiyai"    element={<GoiYAIPage />} />
-            <Route path="/tiendo"    element={<TiendoPage />} />
-            <Route path="/luyende"   element={<LuyendePage />} />
-            <Route path="/ghichu"    element={<GhiChuPage />} />
-            <Route path="/lotrinh"   element={<LotrinhPage />} />
-            <Route path="/banbe"     element={<BanBePage />} />
+            <Route path="/ai-tips"   element={<AITipsPage />} />
+            <Route path="/practice"  element={<PracticePage />} />
+            <Route path="/progress"  element={<ProgressPage />} />
+            <Route path="/notes"     element={<NotesPage />} />
+            <Route path="/roadmap"   element={<RoadmapPage />} />
+            <Route path="/friends"   element={<FriendsPage />} />
           </Route>
 
           <Route path="*" element={<NotFoundPage />} />

@@ -12,14 +12,14 @@ export default function DashboardLayout() {
 
   useEffect(() => {
     const map: Record<string, string> = {
-      '/goiyai':  'Gợi ý AI',
-      '/ghichu':  'Ghi chú',
-      '/tiendo':  'Tiến độ',
-      '/lotrinh': 'Lộ trình',
-      '/banbe':   'Bạn bè',
+      '/ai-tips':  'Gợi ý AI',
+      '/notes':    'Ghi chú',
+      '/progress': 'Tiến độ',
+      '/roadmap':  'Lộ trình',
+      '/friends':  'Bạn bè',
     };
     if (map[pathname]) setActiveLabel(map[pathname]);
-    else if (pathname.startsWith('/luyende')) setActiveLabel('Luyện đề');
+    else if (pathname.startsWith('/practice')) setActiveLabel('Luyện đề');
   }, [pathname]);
 
   function navCls(label: string) {
@@ -56,7 +56,7 @@ export default function DashboardLayout() {
           {/* Gợi ý AI */}
           <a
             href="#"
-            onClick={(e) => { e.preventDefault(); setActiveLabel('Gợi ý AI'); navigate('/goiyai'); }}
+            onClick={(e) => { e.preventDefault(); setActiveLabel('Gợi ý AI'); navigate('/ai-tips'); }}
             className={navCls('Gợi ý AI')}
           >
             <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>psychology</span>
@@ -90,7 +90,7 @@ export default function DashboardLayout() {
                     onClick={(e) => {
                       e.preventDefault();
                       setActiveLabel('Luyện đề');
-                      navigate('/luyende');
+                      navigate('/practice');
                       setPracticeOpen(false);
                     }}
                     className="flex items-center gap-3 px-3 py-2 text-[13.5px] text-on-surface hover:bg-surface-container-low transition-colors"

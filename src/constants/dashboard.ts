@@ -1,9 +1,9 @@
 export const NAV_ITEMS = [
-  { icon: 'psychology', label: 'Gợi ý AI',  path: '/goiyai' },
-  { icon: 'push_pin',   label: 'Ghi chú',   path: '/ghichu' },
-  { icon: 'bar_chart',  label: 'Tiến độ',   path: '/tiendo' },
-  { icon: 'menu_book',  label: 'Lộ trình',  path: '/lotrinh' },
-  { icon: 'group',      label: 'Bạn bè',    path: '/banbe' },
+  { icon: 'psychology', label: 'Gợi ý AI', path: '/ai-tips'  },
+  { icon: 'push_pin',   label: 'Ghi chú',  path: '/notes'    },
+  { icon: 'bar_chart',  label: 'Tiến độ',  path: '/progress' },
+  { icon: 'menu_book',  label: 'Lộ trình', path: '/roadmap'  },
+  { icon: 'group',      label: 'Bạn bè',   path: '/friends'  },
 ];
 
 export const SCORES = [

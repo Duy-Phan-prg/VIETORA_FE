@@ -1,4 +1,4 @@
-export default function BanBePage() {
+export default function FriendsPage() {
   return (
     <div className="space-y-6">
       <div>

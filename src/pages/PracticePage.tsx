@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const CAM_BOOKS = Array.from({ length: 20 }, (_, i) => `Bộ đề Cambridge ${i + 1}`);
 
-export default function LuyendePage() {
+export default function PracticePage() {
   const [selectedBook, setSelectedBook] = useState<string | null>(null);
 
   return (
