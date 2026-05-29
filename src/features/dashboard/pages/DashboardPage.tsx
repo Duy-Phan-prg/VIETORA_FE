@@ -1,4 +1,4 @@
-import { SCORES, STUDYING } from '../constants/dashboard';
+import { SCORES, STUDYING } from '../../../constants/dashboard';
 
 export default function DashboardPage() {
   return (

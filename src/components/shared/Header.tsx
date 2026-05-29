@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export default function Header() {
   const { lang, setLang, t } = useLanguage();

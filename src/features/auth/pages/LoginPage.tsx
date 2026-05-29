@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
-import { useLanguage } from '../contexts/LanguageContext';
+import Header from '../../../components/shared/Header';
+import { useLanguage } from '../../../contexts/LanguageContext';
 
 function GoogleIcon() {
   return (
@@ -40,7 +40,7 @@ export default function LoginPage() {
               <p className="text-secondary text-body-sm">{t.login.subtitle}</p>
             </div>
 
-            <form className="space-y-stack-md" onSubmit={(e) => { e.preventDefault(); navigate('/goiyai'); }}>
+            <form className="space-y-stack-md" onSubmit={(e) => { e.preventDefault(); navigate('/dashboard'); }}>
               {/* Username */}
               <div className="space-y-1">
                 <label className="font-label-code text-label-code uppercase tracking-wider block">

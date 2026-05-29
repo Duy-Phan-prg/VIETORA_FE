@@ -1,4 +1,4 @@
-import Header from '../components/Header';
+import Header from '../components/shared/Header';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export default function HomePage() {
