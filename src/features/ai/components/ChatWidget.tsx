@@ -11,7 +11,7 @@ const INITIAL_MESSAGES: ChatMessage[] = [
   {
     id: 0,
     role: 'ai',
-    text: 'Xin chào! Mình là Mori 🐱 — trợ lý AI của Vitora. Hôm nay bạn muốn luyện kỹ năng gì?',
+    text: 'Xin chào! Mình là Miro 🐱 — trợ lý AI của Vitora. Hôm nay bạn muốn luyện kỹ năng gì?',
     createdAt: new Date().toISOString(),
   },
 ];
@@ -46,7 +46,7 @@ export default function ChatWidget({ open, onClose }: ChatWidgetProps) {
         {
           id: Date.now() + 1,
           role: 'ai',
-          text: 'Mori đang gặp sự cố kết nối, bạn thử lại sau nhé!',
+          text: 'Miro đang gặp sự cố kết nối, bạn thử lại sau nhé!',
           createdAt: new Date().toISOString(),
         },
       ]);
@@ -70,7 +70,7 @@ export default function ChatWidget({ open, onClose }: ChatWidgetProps) {
           <span className="material-symbols-outlined text-primary" style={{ fontSize: '16px' }}>smart_toy</span>
         </div>
         <div>
-          <p className="text-[13px] font-semibold text-on-surface leading-tight">Mori AI</p>
+          <p className="text-[13px] font-semibold text-on-surface leading-tight">Miro AI</p>
           <p className="text-[11px] text-secondary leading-tight">Trợ lý học IELTS cá nhân</p>
         </div>
         <button
@@ -109,7 +109,7 @@ export default function ChatWidget({ open, onClose }: ChatWidgetProps) {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Hỏi Mori bất cứ điều gì..."
+            placeholder="Hỏi Miro bất cứ điều gì..."
             className="flex-1 bg-transparent text-[13px] text-on-surface placeholder:text-secondary outline-none"
           />
           <button

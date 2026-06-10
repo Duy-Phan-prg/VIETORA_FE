@@ -23,7 +23,7 @@ const SUGGESTIONS = [
 ];
 
 const CHAT_HISTORY = [
-  { role: 'ai',   text: 'Xin chào! Mình là Mori 🐱 — trợ lý AI của Vitora. Hôm nay bạn muốn luyện kỹ năng gì?' },
+  { role: 'ai',   text: 'Xin chào! Mình là Miro 🐱 — trợ lý AI của Vitora. Hôm nay bạn muốn luyện kỹ năng gì?' },
   { role: 'user', text: 'Cho mình vài gợi ý để cải thiện Writing Task 2.' },
   { role: 'ai',   text: 'Dựa trên lịch sử luyện tập, bạn đang ở Band 6.5. Để lên 7.0, mình gợi ý: (1) Luyện viết topic sentence rõ ràng hơn, (2) Dùng cohesive devices đa dạng, (3) Tránh lặp từ — dùng paraphrase nhiều hơn nhé!' },
 ];
@@ -35,7 +35,7 @@ export default function AITipsPage() {
       {/* Header */}
       <div>
         <h1 className="text-[24px] font-bold text-primary mb-1">Gợi ý AI</h1>
-        <p className="text-[14px] text-secondary">Mori phân tích tiến độ của bạn và đề xuất bài học phù hợp nhất hôm nay.</p>
+        <p className="text-[14px] text-secondary">Miro phân tích tiến độ của bạn và đề xuất bài học phù hợp nhất hôm nay.</p>
       </div>
 
       {/* Two-column layout */}
@@ -66,14 +66,14 @@ export default function AITipsPage() {
           ))}
         </div>
 
-        {/* Right: chat with Mori */}
+        {/* Right: chat with Miro */}
         <div className="bg-white border border-outline-variant rounded-xl flex flex-col" style={{ height: '480px' }}>
           <div className="flex items-center gap-3 px-5 py-4 border-b border-outline-variant">
             <div className="w-8 h-8 bg-surface-container rounded-full flex items-center justify-center border border-outline-variant">
               <span className="material-symbols-outlined text-primary" style={{ fontSize: '16px' }}>smart_toy</span>
             </div>
             <div>
-              <p className="text-[13px] font-semibold text-on-surface leading-tight">Mori AI</p>
+              <p className="text-[13px] font-semibold text-on-surface leading-tight">Miro AI</p>
               <p className="text-[11px] text-secondary leading-tight">Trợ lý học IELTS cá nhân</p>
             </div>
             <div className="ml-auto flex items-center gap-1.5">
@@ -105,7 +105,7 @@ export default function AITipsPage() {
             <div className="flex items-center gap-2 bg-surface-container rounded-xl px-4 py-2.5">
               <input
                 type="text"
-                placeholder="Hỏi Mori bất cứ điều gì..."
+                placeholder="Hỏi Miro bất cứ điều gì..."
                 className="flex-1 bg-transparent text-[13px] text-on-surface placeholder:text-secondary outline-none"
               />
               <button className="w-7 h-7 bg-primary text-on-primary rounded-lg flex items-center justify-center hover:opacity-90 transition-opacity shrink-0">

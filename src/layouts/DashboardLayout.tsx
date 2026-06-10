@@ -3,6 +3,7 @@ import { useNavigate, useLocation, Outlet } from 'react-router-dom';
 import { NAV_ITEMS, SCORES, STUDYING } from '../constants/dashboard';
 import ChatWidget from '../features/ai/components/ChatWidget';
 import logo from '../assets/logo/vietora-logo.png';
+import chatbotImg from '../assets/logo/chatbot.png';
 
 export default function DashboardLayout() {
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ export default function DashboardLayout() {
         {/* Logo */}
         <div className="flex items-center justify-between px-4 mb-4">
           <div className="flex items-center gap-2">
-            <img src={logo} alt="Vitora" className="w-14 h-14 rounded-lg object-cover" />
+            <img src={logo} alt="Vitora" className="w-10 h-10 rounded-lg object-cover" />
             <span className="text-[15px] font-bold text-primary tracking-tight">Vitora</span>
           </div>
           <button
@@ -241,26 +242,15 @@ export default function DashboardLayout() {
         </main>
       </div>
 
-      {/* Floating Cat */}
+      {/* Floating ChatBot */}
       <div className="cat-float-wrapper" onClick={() => setChatOpen((o) => !o)}>
-        <span className="cat-tooltip">Hỏi Mori</span>
+        <span className="cat-tooltip">Hỏi Miro</span>
         <div className="cat-container">
-          <div className="cat-ear cat-ear-left" />
-          <div className="cat-ear cat-ear-right" />
-          <div className="cat-head">
-            <div className="cat-eye cat-eye-left"><div className="cat-pupil" /></div>
-            <div className="cat-eye cat-eye-right"><div className="cat-pupil" /></div>
-            <div className="cat-whisker cat-whisker-left cat-w1" />
-            <div className="cat-whisker cat-whisker-left cat-w2" />
-            <div className="cat-whisker cat-whisker-left cat-w3" />
-            <div className="cat-whisker cat-whisker-right cat-w1" />
-            <div className="cat-whisker cat-whisker-right cat-w2" />
-            <div className="cat-whisker cat-whisker-right cat-w3" />
-          </div>
+          <img src={chatbotImg} alt="Chatbot Miro" className="chatbot-img" />
         </div>
       </div>
 
-      {/* Mori chat panel */}
+      {/* Miro chat panel */}
       <ChatWidget open={chatOpen} onClose={() => setChatOpen(false)} />
     </div>
   );
