@@ -36,7 +36,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 72px;
+  padding: 10px 72px;
   border-bottom: 1.5px solid #ebebeb;
   background: #fff;
   position: sticky;
@@ -55,17 +55,10 @@
 }
 
 .logo-mark {
-  width: 34px;
-  height: 34px;
-  background: #0a0a0a;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 900;
+  width: 64px;
+  height: 64px;
   border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #0a0a0a;
+  object-fit: cover;
 }
 
 .nav-links {

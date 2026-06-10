@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Outlet } from 'react-router-dom';
 import { NAV_ITEMS, SCORES, STUDYING } from '../constants/dashboard';
+import ChatWidget from '../features/ai/components/ChatWidget';
+import logo from '../assets/logo/vietora-logo.png';
 
 export default function DashboardLayout() {
   const navigate = useNavigate();
@@ -8,7 +10,10 @@ export default function DashboardLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [practiceOpen, setPracticeOpen] = useState(false);
   const [practiceY, setPracticeY] = useState(0);
+  const [skillOpen, setSkillOpen] = useState(false);
+  const [skillY, setSkillY] = useState(0);
   const [activeLabel, setActiveLabel] = useState('Lộ trình');
+  const [chatOpen, setChatOpen] = useState(false);
 
   useEffect(() => {
     const map: Record<string, string> = {
@@ -19,7 +24,8 @@ export default function DashboardLayout() {
       '/friends':  'Bạn bè',
     };
     if (map[pathname]) setActiveLabel(map[pathname]);
-    else if (pathname.startsWith('/practice')) setActiveLabel('Luyện đề');
+    else if (pathname.startsWith('/practice'))       setActiveLabel('Luyện đề');
+    else if (pathname.startsWith('/skill-training')) setActiveLabel('Luyện kỹ năng');
   }, [pathname]);
 
   function navCls(label: string) {
@@ -41,7 +47,10 @@ export default function DashboardLayout() {
       >
         {/* Logo */}
         <div className="flex items-center justify-between px-4 mb-4">
-          <span className="text-[15px] font-bold text-primary tracking-tight">Vitora</span>
+          <div className="flex items-center gap-2">
+            <img src={logo} alt="Vitora" className="w-14 h-14 rounded-lg object-cover" />
+            <span className="text-[15px] font-bold text-primary tracking-tight">Vitora</span>
+          </div>
           <button
             onClick={() => setSidebarOpen(false)}
             className="w-7 h-7 flex items-center justify-center rounded-lg text-secondary hover:text-primary hover:bg-surface-container transition-colors"
@@ -103,8 +112,56 @@ export default function DashboardLayout() {
             )}
           </div>
 
+          {/* Luyện kỹ năng — popover */}
+          <div className="relative">
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                setSkillY((e.currentTarget as HTMLElement).getBoundingClientRect().top);
+                setSkillOpen(o => !o);
+              }}
+              className={navCls('Luyện kỹ năng')}
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>fitness_center</span>
+              <span className="flex-1">Luyện kỹ năng</span>
+              <span className="material-symbols-outlined text-secondary" style={{ fontSize: '16px' }}>chevron_right</span>
+            </a>
+            {skillOpen && (
+              <>
+                <div className="fixed inset-0 z-40" onClick={() => setSkillOpen(false)} />
+                <div
+                  className="fixed z-50 bg-white border border-outline-variant rounded-xl shadow-md py-1.5 w-44"
+                  style={{ left: '232px', top: skillY }}
+                >
+                  {[
+                    { label: 'Listening', icon: 'headphones', path: '/skill-training/listening' },
+                    { label: 'Reading',   icon: 'menu_book',  path: '/skill-training/reading'   },
+                    { label: 'Writing',   icon: 'edit_note',  path: '/skill-training/writing'   },
+                    { label: 'Speaking',  icon: 'mic',        path: '/skill-training/speaking'  },
+                  ].map(({ label, icon, path }) => (
+                    <a
+                      key={label}
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setActiveLabel('Luyện kỹ năng');
+                        navigate(path);
+                        setSkillOpen(false);
+                      }}
+                      className="flex items-center gap-3 px-3 py-2 text-[13.5px] text-on-surface hover:bg-surface-container-low transition-colors"
+                    >
+                      <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>{icon}</span>
+                      {label}
+                    </a>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+
           {/* Other nav items */}
-          {NAV_ITEMS.filter(n => n.label !== 'Gợi ý AI').map(({ icon, label, path }) => (
+          {NAV_ITEMS.filter(n => n.label !== 'Gợi ý AI' && n.label !== 'Luyện kỹ năng').map(({ icon, label, path }) => (
             <a
               key={label}
               href="#"
@@ -185,7 +242,7 @@ export default function DashboardLayout() {
       </div>
 
       {/* Floating Cat */}
-      <div className="cat-float-wrapper">
+      <div className="cat-float-wrapper" onClick={() => setChatOpen((o) => !o)}>
         <span className="cat-tooltip">Hỏi Mori</span>
         <div className="cat-container">
           <div className="cat-ear cat-ear-left" />
@@ -202,6 +259,9 @@ export default function DashboardLayout() {
           </div>
         </div>
       </div>
+
+      {/* Mori chat panel */}
+      <ChatWidget open={chatOpen} onClose={() => setChatOpen(false)} />
     </div>
   );
 }

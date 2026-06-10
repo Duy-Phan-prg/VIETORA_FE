@@ -22,6 +22,9 @@ import PracticePage from '../features/quiz/pages/PracticePage';
 import FriendsPage  from '../pages/FriendsPage';
 import RoadmapPage  from '../pages/RoadmapPage';
 
+// Skill Training
+import SkillDetailPage from '../features/skilltraining/pages/SkillDetailPage';
+
 export default function AppRoutes() {
   return (
     <Routes>
@@ -36,8 +39,9 @@ export default function AppRoutes() {
         <Route path="/practice"  element={<PracticePage />} />
         <Route path="/progress"  element={<ProgressPage />} />
         <Route path="/notes"     element={<NotesPage />} />
-        <Route path="/roadmap"   element={<RoadmapPage />} />
-        <Route path="/friends"   element={<FriendsPage />} />
+        <Route path="/roadmap"              element={<RoadmapPage />} />
+        <Route path="/friends"              element={<FriendsPage />} />
+        <Route path="/skill-training/:skill" element={<SkillDetailPage />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />
