@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Outlet } from 'react-router-dom';
 import { MORE_ITEMS, STUDYING } from '../constants/dashboard';
-import logo from '../assets/logo/vietora-logo.png';
 
 export default function DashboardLayout() {
   const navigate = useNavigate();
@@ -17,8 +16,6 @@ export default function DashboardLayout() {
 
   useEffect(() => {
     const map: Record<string, string> = {
-      '/ai-tips':   'Gợi ý AI',
-      '/skill-map': 'Skill map',
       '/mock-test': 'Thi thử',
       '/progress':  'Tiến độ',
       '/roadmap':   'Lộ trình',
@@ -45,14 +42,13 @@ export default function DashboardLayout() {
     <div className="bg-[#fafafa] text-on-surface font-body-md overflow-x-hidden">
 
       {/* ── Sidebar ─────────────────────────────── */}
-      <aside className={`fixed left-3 top-3 bottom-3 bg-white border border-outline-variant/40 rounded-2xl shadow-sm
-        flex flex-col py-3 z-50 transition-all duration-200 overflow-hidden
+      <aside className={`fixed left-3 top-3 bottom-3 bg-white border border-outline-variant rounded-2xl shadow-md
+        flex flex-col py-4 z-50 transition-all duration-200 overflow-hidden
         ${sidebarOpen ? 'w-[230px]' : 'w-0 border-0 shadow-none'}`}
       >
         {/* Logo */}
         <div className="flex items-center justify-between px-4 mb-4">
           <div className="flex items-center gap-2">
-            <img src={logo} alt="Vietora" className="w-12 h-12 rounded-lg object-cover" />
             <span className="brand-name text-[19px] text-primary tracking-tight">Vietora</span>
           </div>
           <button
@@ -64,10 +60,10 @@ export default function DashboardLayout() {
         </div>
 
         {/* Nav */}
-        <nav className="flex-1 overflow-y-auto px-2 space-y-0.5 text-[13.5px] [&_a]:no-underline">
+        <nav className="flex-1 overflow-y-auto px-2 space-y-1 text-[13.5px] [&_a]:no-underline">
 
           {/* Home / Cowork toggle */}
-          <div className="flex items-center bg-surface-container rounded-lg p-0.5 mb-1">
+          <div className="flex items-center bg-surface-container rounded-lg p-0.5 mb-3">
             <button
               onClick={() => setSidebarMode('home')}
               className={`flex-1 px-3 py-1.5 rounded-md text-[12.5px] transition-colors ${
@@ -76,7 +72,7 @@ export default function DashboardLayout() {
                   : 'text-secondary font-medium'
               }`}
             >
-              Home
+              Học
             </button>
             <button
               onClick={() => setSidebarMode('cowork')}
@@ -86,7 +82,7 @@ export default function DashboardLayout() {
                   : 'text-secondary font-medium'
               }`}
             >
-              Cowork
+              Cùng học
             </button>
           </div>
 
@@ -125,10 +121,10 @@ export default function DashboardLayout() {
                   style={{ left: '258px', top: skillY }}
                 >
                   {[
-                    { label: 'Listening', icon: 'headphones', path: '/skill-training/listening' },
-                    { label: 'Reading',   icon: 'menu_book',  path: '/skill-training/reading'   },
-                    { label: 'Writing',   icon: 'edit_note',  path: '/skill-training/writing'   },
-                    { label: 'Speaking',  icon: 'mic',        path: '/skill-training/speaking'  },
+                    { label: 'Nghe',  icon: 'headphones', path: '/skill-training/listening' },
+                    { label: 'Đọc',   icon: 'menu_book',  path: '/skill-training/reading'   },
+                    { label: 'Viết',  icon: 'edit_note',  path: '/skill-training/writing'   },
+                    { label: 'Nói',   icon: 'mic',        path: '/skill-training/speaking'  },
                   ].map(({ label, icon, path }) => (
                     <a
                       key={label}
@@ -210,42 +206,12 @@ export default function DashboardLayout() {
             Tiến độ
           </a>
 
-          {/* Skill map */}
-          <a
-            href="#"
-            onClick={(e) => { e.preventDefault(); setActiveLabel('Skill map'); navigate('/skill-map'); }}
-            className={navCls('Skill map')}
-          >
-            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>account_tree</span>
-            <span className="flex-1">Skill map</span>
-            <span className="text-[10px] font-semibold bg-primary/10 text-primary px-1.5 py-0.5 rounded-full">Mới</span>
-          </a>
-
-          {/* Gợi ý AI */}
-          <a
-            href="#"
-            onClick={(e) => { e.preventDefault(); setActiveLabel('Gợi ý AI'); navigate('/ai-tips'); }}
-            className={navCls('Gợi ý AI')}
-          >
-            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>psychology</span>
-            Gợi ý AI
-          </a>
-
           </>
           )}
 
           {/* Cowork — Thêm items moved here */}
           {sidebarMode === 'cowork' && (
           <>
-          <a
-            href="#"
-            onClick={(e) => { e.preventDefault(); setActiveLabel('Gợi ý AI'); navigate('/ai-tips'); }}
-            className={navCls('Phiên học mới')}
-          >
-            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>add</span>
-            <span className="flex-1">Phiên học mới</span>
-            <span className="text-[10px] font-semibold bg-primary/10 text-primary px-1.5 py-0.5 rounded-full">Mới</span>
-          </a>
           {MORE_ITEMS.map(({ icon, label, path, badge }) => (
             <a
               key={label}
@@ -261,6 +227,27 @@ export default function DashboardLayout() {
             </a>
           ))}
           </>
+          )}
+
+          {/* Ghim */}
+          {sidebarMode === 'home' && (
+          <div className="pt-4">
+            <hr className="border-t border-outline-variant/50 mx-3 mb-3" />
+            <p className="px-3 pb-1 text-[11px] font-semibold text-secondary uppercase tracking-wider">Ghim</p>
+            {[
+              { icon: 'description', title: 'Notes TFNG' },
+              { icon: 'menu_book',   title: 'Bộ từ Writing' },
+            ].map(({ icon, title }) => (
+              <a
+                key={title}
+                href="#"
+                className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-on-surface hover:bg-surface-container-low transition-colors"
+              >
+                <span className="material-symbols-outlined text-secondary" style={{ fontSize: '15px' }}>{icon}</span>
+                <span className="truncate text-[13px] flex-1">{title}</span>
+              </a>
+            ))}
+          </div>
           )}
 
           {/* Đang học */}
@@ -331,10 +318,45 @@ export default function DashboardLayout() {
 
       {/* Content area */}
       <div className={`min-h-screen transition-all duration-200 ${sidebarOpen ? 'ml-[246px]' : 'ml-0'}`}>
-        <main className="pt-16 pr-[76px] pb-16 pl-6 max-w-[1280px] mx-auto">
+        <main className="pt-16 pr-[96px] pb-16 pl-6 max-w-[1280px] mx-auto">
           <Outlet />
         </main>
       </div>
+
+      {/* ── Right icon rail ─────────────────────── */}
+      <aside className="fixed right-3 top-1/2 -translate-y-1/2 w-14 bg-white border border-outline-variant rounded-2xl shadow-md flex flex-col items-center py-3 z-50">
+        <div className="flex flex-col items-center gap-2">
+          {[
+            { icon: 'assignment_turned_in', badge: 3,    active: true  },
+            { icon: 'style',                badge: null, active: false },
+            { icon: 'menu_book',            badge: null, active: false },
+            { icon: 'lightbulb',            badge: 'dot', active: false },
+            { icon: 'calendar_month',       badge: null, active: false },
+            { icon: 'group',                badge: null, active: false },
+          ].map(({ icon, badge, active }, i) => (
+            <button
+              key={i}
+              className={`relative w-10 h-10 flex items-center justify-center rounded-xl transition-colors ${
+                active ? 'bg-primary/10 text-primary' : 'text-secondary hover:bg-surface-container hover:text-on-surface'
+              }`}
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>{icon}</span>
+              {badge === 'dot' && (
+                <span className="absolute top-1.5 right-2 w-2 h-2 rounded-full bg-error ring-2 ring-white" />
+              )}
+              {typeof badge === 'number' && (
+                <span className="absolute top-0 right-0 min-w-[16px] h-4 px-1 rounded-full bg-error text-white text-[10px] font-semibold flex items-center justify-center ring-2 ring-white">
+                  {badge}
+                </span>
+              )}
+            </button>
+          ))}
+        </div>
+        <div className="w-8 border-t border-outline-variant/60 mb-2" />
+        <button className="w-10 h-10 flex items-center justify-center rounded-xl text-secondary hover:bg-surface-container hover:text-on-surface transition-colors">
+          <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>chevron_left</span>
+        </button>
+      </aside>
 
     </div>
   );

@@ -1,9 +1,9 @@
-/* ─── Friendly font stack (matches Miro's cute vibe) ────── */
+/* ─── Font stack ─────────────────────────────────────── */
 :root {
-  --font-notion: "Nunito", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  --font-notion: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji",
     "Segoe UI Symbol";
-  --font-brand: "Baloo 2", var(--font-notion);
+  --font-brand: var(--font-notion);
 }
 
 body {
