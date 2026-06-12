@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Outlet } from 'react-router-dom';
 import { MORE_ITEMS, STUDYING } from '../constants/dashboard';
-import ChatWidget from '../features/chatbot/components/ChatWidget';
 import logo from '../assets/logo/vietora-logo.png';
-import chatbotImg from '../assets/logo/chatbot.png';
 
 export default function DashboardLayout() {
   const navigate = useNavigate();
@@ -14,7 +12,6 @@ export default function DashboardLayout() {
   const [skillOpen, setSkillOpen] = useState(false);
   const [skillY, setSkillY] = useState(0);
   const [activeLabel, setActiveLabel] = useState('Lộ trình');
-  const [chatOpen, setChatOpen] = useState(false);
   const [zaloReminder, setZaloReminder] = useState(true);
   const [sidebarMode, setSidebarMode] = useState<'home' | 'cowork'>('cowork');
 
@@ -32,7 +29,7 @@ export default function DashboardLayout() {
     };
     if (map[pathname]) setActiveLabel(map[pathname]);
     else if (pathname.startsWith('/practice'))       setActiveLabel('Luyện đề');
-    else if (pathname.startsWith('/skill-training')) setActiveLabel('Luyện kỹ năng');
+    else if (pathname.startsWith('/skill-training')) setActiveLabel('Kỹ năng');
   }, [pathname]);
 
   function navCls(label: string) {
@@ -50,13 +47,13 @@ export default function DashboardLayout() {
       {/* ── Sidebar ─────────────────────────────── */}
       <aside className={`fixed left-3 top-3 bottom-3 bg-white border border-outline-variant/40 rounded-2xl shadow-sm
         flex flex-col py-3 z-50 transition-all duration-200 overflow-hidden
-        ${sidebarOpen ? 'w-[270px]' : 'w-0 border-0 shadow-none'}`}
+        ${sidebarOpen ? 'w-[230px]' : 'w-0 border-0 shadow-none'}`}
       >
         {/* Logo */}
         <div className="flex items-center justify-between px-4 mb-4">
           <div className="flex items-center gap-2">
-            <img src={logo} alt="Vitora" className="w-12 h-12 rounded-lg object-cover" />
-            <span className="brand-name text-[19px] text-primary tracking-tight">Vitora</span>
+            <img src={logo} alt="Vietora" className="w-12 h-12 rounded-lg object-cover" />
+            <span className="brand-name text-[19px] text-primary tracking-tight">Vietora</span>
           </div>
           <button
             onClick={() => setSidebarOpen(false)}
@@ -105,7 +102,7 @@ export default function DashboardLayout() {
             Lộ trình
           </a>
 
-          {/* Luyện kỹ năng — popover */}
+          {/* Kỹ năng — popover */}
           <div className="relative">
             <a
               href="#"
@@ -114,10 +111,10 @@ export default function DashboardLayout() {
                 setSkillY((e.currentTarget as HTMLElement).getBoundingClientRect().top);
                 setSkillOpen(o => !o);
               }}
-              className={navCls('Luyện kỹ năng')}
+              className={navCls('Kỹ năng')}
             >
               <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>fitness_center</span>
-              <span className="flex-1">Luyện kỹ năng</span>
+              <span className="flex-1">Kỹ năng</span>
               <span className="material-symbols-outlined text-secondary" style={{ fontSize: '16px' }}>chevron_right</span>
             </a>
             {skillOpen && (
@@ -125,7 +122,7 @@ export default function DashboardLayout() {
                 <div className="fixed inset-0 z-40" onClick={() => setSkillOpen(false)} />
                 <div
                   className="fixed z-50 bg-white border border-outline-variant rounded-xl shadow-md py-1.5 w-44"
-                  style={{ left: '298px', top: skillY }}
+                  style={{ left: '258px', top: skillY }}
                 >
                   {[
                     { label: 'Listening', icon: 'headphones', path: '/skill-training/listening' },
@@ -138,7 +135,7 @@ export default function DashboardLayout() {
                       href="#"
                       onClick={(e) => {
                         e.preventDefault();
-                        setActiveLabel('Luyện kỹ năng');
+                        setActiveLabel('Kỹ năng');
                         navigate(path);
                         setSkillOpen(false);
                       }}
@@ -173,7 +170,7 @@ export default function DashboardLayout() {
                 <div className="fixed inset-0 z-40" onClick={() => setPracticeOpen(false)} />
                 <div
                   className="fixed z-50 bg-white border border-outline-variant rounded-xl shadow-md py-1.5 w-44"
-                  style={{ left: '298px', top: practiceY }}
+                  style={{ left: '258px', top: practiceY }}
                 >
                   <a
                     href="#"
@@ -333,22 +330,12 @@ export default function DashboardLayout() {
       )}
 
       {/* Content area */}
-      <div className={`min-h-screen transition-all duration-200 ${sidebarOpen ? 'ml-[298px]' : 'ml-0'}`}>
-        <main className="p-container-padding-desktop max-w-[1440px] mx-auto">
+      <div className={`min-h-screen transition-all duration-200 ${sidebarOpen ? 'ml-[246px]' : 'ml-0'}`}>
+        <main className="pt-16 pr-[76px] pb-16 pl-6 max-w-[1280px] mx-auto">
           <Outlet />
         </main>
       </div>
 
-      {/* Floating ChatBot */}
-      <div className="cat-float-wrapper" onClick={() => setChatOpen((o) => !o)}>
-        <span className="cat-tooltip">Hỏi Miro</span>
-        <div className="cat-container">
-          <img src={chatbotImg} alt="Chatbot Miro" className="chatbot-img" />
-        </div>
-      </div>
-
-      {/* Miro chat panel */}
-      <ChatWidget open={chatOpen} onClose={() => setChatOpen(false)} />
     </div>
   );
 }

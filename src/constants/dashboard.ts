@@ -1,7 +1,7 @@
 export const NAV_ITEMS = [
   { icon: 'psychology',     label: 'Gợi ý AI',          path: '/ai-tips'        },
   { icon: 'account_tree',   label: 'Skill map',        path: '/skill-map',     badge: 'Mới' },
-  { icon: 'fitness_center', label: 'Luyện kỹ năng',     path: '/skill-training' },
+  { icon: 'fitness_center', label: 'Kỹ năng',          path: '/skill-training' },
   { icon: 'fact_check',     label: 'Thi thử',           path: '/mock-test'      },
   { icon: 'menu_book',      label: 'Lộ trình',          path: '/roadmap'        },
   { icon: 'bar_chart',      label: 'Tiến độ',           path: '/progress'       },

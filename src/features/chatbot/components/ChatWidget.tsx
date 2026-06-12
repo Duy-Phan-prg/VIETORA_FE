@@ -11,7 +11,7 @@ const INITIAL_MESSAGES: ChatMessage[] = [
   {
     id: 0,
     role: 'ai',
-    text: 'Xin chào! Mình là Miro 🐱 — trợ lý AI của Vitora. Hôm nay bạn muốn luyện kỹ năng gì?',
+    text: 'Xin chào! Mình là Miro 🐱 — trợ lý AI của Vietora. Hôm nay bạn muốn luyện kỹ năng gì?',
     createdAt: new Date().toISOString(),
   },
 ];

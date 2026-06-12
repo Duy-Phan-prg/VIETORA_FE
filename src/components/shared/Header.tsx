@@ -8,8 +8,8 @@ export default function Header() {
   return (
     <nav className="navbar">
       <Link to="/" className="nav-logo">
-        <img src={logo} alt="Vitora" className="logo-mark" />
-        <span className="brand-name">Vitora</span>
+        <img src={logo} alt="Vietora" className="logo-mark" />
+        <span className="brand-name">Vietora</span>
       </Link>
 
       <div className="nav-links">
