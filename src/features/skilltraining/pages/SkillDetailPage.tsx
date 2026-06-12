@@ -29,7 +29,7 @@ export default function SkillDetailPage() {
           {meta.icon}
         </span>
         <div>
-          <h1 className="text-[22px] font-bold text-primary leading-tight">{meta.label}</h1>
+          <h1 className="brand-name text-[24px] text-primary leading-tight">{meta.label}</h1>
           <p className="text-[13px] text-secondary">{meta.topics.length} chủ đề</p>
         </div>
       </div>
@@ -46,7 +46,7 @@ export default function SkillDetailPage() {
               {idx + 1}
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-[14.5px] font-semibold text-primary">{topic.title}</p>
+              <p className="brand-name text-[15.5px] text-primary">{topic.title}</p>
               <p className="text-[12.5px] text-secondary mt-0.5">{topic.desc}</p>
             </div>
             <div className="text-right shrink-0">

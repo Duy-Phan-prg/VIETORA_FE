@@ -27,13 +27,13 @@ html {
 body {
   background: #ffffff;
   color: #0a0a0a;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-notion);
   overflow-x: hidden;
 }
 
 /* Unify all elements to Inter */
 *, input, button, textarea, select {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-notion);
 }
 
 #root {

@@ -1,7 +1,7 @@
 import api from '../../../lib/axios';
-import type { ChatMessage, ChatRequest } from '../types/ai.types';
+import type { ChatMessage, ChatRequest } from '../types/chatbot.types';
 
-export const aiService = {
+export const chatbotService = {
   sendMessage: (data: ChatRequest) =>
     api.post<ChatMessage>('/api/ai-chat/send', data).then((r) => r.data),
 

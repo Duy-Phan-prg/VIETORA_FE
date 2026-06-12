@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { aiService } from '../services/aiService';
-import type { ChatMessage } from '../types/ai.types';
+import { chatbotService } from '../services/chatbotService';
+import type { ChatMessage } from '../types/chatbot.types';
 
 interface ChatWidgetProps {
   open: boolean;
@@ -38,7 +38,7 @@ export default function ChatWidget({ open, onClose }: ChatWidgetProps) {
     setSending(true);
 
     try {
-      const reply = await aiService.sendMessage({ message: text });
+      const reply = await chatbotService.sendMessage({ message: text });
       setMessages((prev) => [...prev, reply]);
     } catch {
       setMessages((prev) => [

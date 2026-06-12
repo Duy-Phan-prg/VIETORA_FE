@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Outlet } from 'react-router-dom';
-import { NAV_ITEMS, SCORES, STUDYING } from '../constants/dashboard';
-import ChatWidget from '../features/ai/components/ChatWidget';
+import { MORE_ITEMS, STUDYING } from '../constants/dashboard';
+import ChatWidget from '../features/chatbot/components/ChatWidget';
 import logo from '../assets/logo/vietora-logo.png';
 import chatbotImg from '../assets/logo/chatbot.png';
 
@@ -15,14 +15,20 @@ export default function DashboardLayout() {
   const [skillY, setSkillY] = useState(0);
   const [activeLabel, setActiveLabel] = useState('Lộ trình');
   const [chatOpen, setChatOpen] = useState(false);
+  const [zaloReminder, setZaloReminder] = useState(true);
+  const [sidebarMode, setSidebarMode] = useState<'home' | 'cowork'>('cowork');
 
   useEffect(() => {
     const map: Record<string, string> = {
-      '/ai-tips':  'Gợi ý AI',
-      '/notes':    'Ghi chú',
-      '/progress': 'Tiến độ',
-      '/roadmap':  'Lộ trình',
-      '/friends':  'Bạn bè',
+      '/ai-tips':   'Gợi ý AI',
+      '/skill-map': 'Skill map',
+      '/mock-test': 'Thi thử',
+      '/progress':  'Tiến độ',
+      '/roadmap':   'Lộ trình',
+      '/notes':     'Kho kiến thức',
+      '/schedule':  'Lịch học',
+      '/friends':   'Bạn học',
+      '/settings':  'Tùy chỉnh',
     };
     if (map[pathname]) setActiveLabel(map[pathname]);
     else if (pathname.startsWith('/practice'))       setActiveLabel('Luyện đề');
@@ -31,26 +37,26 @@ export default function DashboardLayout() {
 
   function navCls(label: string) {
     const active = activeLabel === label;
-    return `flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${
+    return `flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium ${
       active
-        ? 'bg-surface-container text-primary font-medium'
-        : 'text-on-surface hover:bg-surface-container-low'
+        ? 'bg-surface-container-high text-on-surface'
+        : 'text-on-surface hover:bg-surface-container'
     }`;
   }
 
   return (
-    <div className="bg-white text-on-surface font-body-md overflow-x-hidden">
+    <div className="bg-[#fafafa] text-on-surface font-body-md overflow-x-hidden">
 
       {/* ── Sidebar ─────────────────────────────── */}
-      <aside className={`h-screen fixed left-0 top-0 bg-white border-r border-outline-variant/50
+      <aside className={`fixed left-3 top-3 bottom-3 bg-white border border-outline-variant/40 rounded-2xl shadow-sm
         flex flex-col py-3 z-50 transition-all duration-200 overflow-hidden
-        ${sidebarOpen ? 'w-56' : 'w-0'}`}
+        ${sidebarOpen ? 'w-[270px]' : 'w-0 border-0 shadow-none'}`}
       >
         {/* Logo */}
         <div className="flex items-center justify-between px-4 mb-4">
           <div className="flex items-center gap-2">
-            <img src={logo} alt="Vitora" className="w-10 h-10 rounded-lg object-cover" />
-            <span className="text-[15px] font-bold text-primary tracking-tight">Vitora</span>
+            <img src={logo} alt="Vitora" className="w-12 h-12 rounded-lg object-cover" />
+            <span className="brand-name text-[19px] text-primary tracking-tight">Vitora</span>
           </div>
           <button
             onClick={() => setSidebarOpen(false)}
@@ -63,55 +69,41 @@ export default function DashboardLayout() {
         {/* Nav */}
         <nav className="flex-1 overflow-y-auto px-2 space-y-0.5 text-[13.5px] [&_a]:no-underline">
 
-          {/* Gợi ý AI */}
+          {/* Home / Cowork toggle */}
+          <div className="flex items-center bg-surface-container rounded-lg p-0.5 mb-1">
+            <button
+              onClick={() => setSidebarMode('home')}
+              className={`flex-1 px-3 py-1.5 rounded-md text-[12.5px] transition-colors ${
+                sidebarMode === 'home'
+                  ? 'bg-white text-on-surface font-semibold shadow-sm'
+                  : 'text-secondary font-medium'
+              }`}
+            >
+              Home
+            </button>
+            <button
+              onClick={() => setSidebarMode('cowork')}
+              className={`flex-1 px-3 py-1.5 rounded-md text-[12.5px] transition-colors ${
+                sidebarMode === 'cowork'
+                  ? 'bg-white text-on-surface font-semibold shadow-sm'
+                  : 'text-secondary font-medium'
+              }`}
+            >
+              Cowork
+            </button>
+          </div>
+
+          {sidebarMode === 'home' && (
+          <>
+          {/* Lộ trình */}
           <a
             href="#"
-            onClick={(e) => { e.preventDefault(); setActiveLabel('Gợi ý AI'); navigate('/ai-tips'); }}
-            className={navCls('Gợi ý AI')}
+            onClick={(e) => { e.preventDefault(); setActiveLabel('Lộ trình'); navigate('/roadmap'); }}
+            className={navCls('Lộ trình')}
           >
-            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>psychology</span>
-            Gợi ý AI
+            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>menu_book</span>
+            Lộ trình
           </a>
-
-          {/* Luyện đề — popover */}
-          <div className="relative">
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                setPracticeY((e.currentTarget as HTMLElement).getBoundingClientRect().top);
-                setPracticeOpen(o => !o);
-              }}
-              className={navCls('Luyện đề')}
-            >
-              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>edit_note</span>
-              <span className="flex-1">Luyện đề</span>
-              <span className="material-symbols-outlined text-secondary" style={{ fontSize: '16px' }}>chevron_right</span>
-            </a>
-            {practiceOpen && (
-              <>
-                <div className="fixed inset-0 z-40" onClick={() => setPracticeOpen(false)} />
-                <div
-                  className="fixed z-50 bg-white border border-outline-variant rounded-xl shadow-md py-1.5 w-44"
-                  style={{ left: '232px', top: practiceY }}
-                >
-                  <a
-                    href="#"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setActiveLabel('Luyện đề');
-                      navigate('/practice');
-                      setPracticeOpen(false);
-                    }}
-                    className="flex items-center gap-3 px-3 py-2 text-[13.5px] text-on-surface hover:bg-surface-container-low transition-colors"
-                  >
-                    <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>menu_book</span>
-                    Đề Cambridge
-                  </a>
-                </div>
-              </>
-            )}
-          </div>
 
           {/* Luyện kỹ năng — popover */}
           <div className="relative">
@@ -133,7 +125,7 @@ export default function DashboardLayout() {
                 <div className="fixed inset-0 z-40" onClick={() => setSkillOpen(false)} />
                 <div
                   className="fixed z-50 bg-white border border-outline-variant rounded-xl shadow-md py-1.5 w-44"
-                  style={{ left: '232px', top: skillY }}
+                  style={{ left: '298px', top: skillY }}
                 >
                   {[
                     { label: 'Listening', icon: 'headphones', path: '/skill-training/listening' },
@@ -161,8 +153,103 @@ export default function DashboardLayout() {
             )}
           </div>
 
-          {/* Other nav items */}
-          {NAV_ITEMS.filter(n => n.label !== 'Gợi ý AI' && n.label !== 'Luyện kỹ năng').map(({ icon, label, path }) => (
+          {/* Luyện đề — popover */}
+          <div className="relative">
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                setPracticeY((e.currentTarget as HTMLElement).getBoundingClientRect().top);
+                setPracticeOpen(o => !o);
+              }}
+              className={navCls('Luyện đề')}
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>edit_note</span>
+              <span className="flex-1">Luyện đề</span>
+              <span className="material-symbols-outlined text-secondary" style={{ fontSize: '16px' }}>chevron_right</span>
+            </a>
+            {practiceOpen && (
+              <>
+                <div className="fixed inset-0 z-40" onClick={() => setPracticeOpen(false)} />
+                <div
+                  className="fixed z-50 bg-white border border-outline-variant rounded-xl shadow-md py-1.5 w-44"
+                  style={{ left: '298px', top: practiceY }}
+                >
+                  <a
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setActiveLabel('Luyện đề');
+                      navigate('/practice');
+                      setPracticeOpen(false);
+                    }}
+                    className="flex items-center gap-3 px-3 py-2 text-[13.5px] text-on-surface hover:bg-surface-container-low transition-colors"
+                  >
+                    <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>menu_book</span>
+                    Đề Cambridge
+                  </a>
+                </div>
+              </>
+            )}
+          </div>
+
+          {/* Thi thử */}
+          <a
+            href="#"
+            onClick={(e) => { e.preventDefault(); setActiveLabel('Thi thử'); navigate('/mock-test'); }}
+            className={navCls('Thi thử')}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>fact_check</span>
+            Thi thử
+          </a>
+
+          {/* Tiến độ */}
+          <a
+            href="#"
+            onClick={(e) => { e.preventDefault(); setActiveLabel('Tiến độ'); navigate('/progress'); }}
+            className={navCls('Tiến độ')}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>bar_chart</span>
+            Tiến độ
+          </a>
+
+          {/* Skill map */}
+          <a
+            href="#"
+            onClick={(e) => { e.preventDefault(); setActiveLabel('Skill map'); navigate('/skill-map'); }}
+            className={navCls('Skill map')}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>account_tree</span>
+            <span className="flex-1">Skill map</span>
+            <span className="text-[10px] font-semibold bg-primary/10 text-primary px-1.5 py-0.5 rounded-full">Mới</span>
+          </a>
+
+          {/* Gợi ý AI */}
+          <a
+            href="#"
+            onClick={(e) => { e.preventDefault(); setActiveLabel('Gợi ý AI'); navigate('/ai-tips'); }}
+            className={navCls('Gợi ý AI')}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>psychology</span>
+            Gợi ý AI
+          </a>
+
+          </>
+          )}
+
+          {/* Cowork — Thêm items moved here */}
+          {sidebarMode === 'cowork' && (
+          <>
+          <a
+            href="#"
+            onClick={(e) => { e.preventDefault(); setActiveLabel('Gợi ý AI'); navigate('/ai-tips'); }}
+            className={navCls('Phiên học mới')}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>add</span>
+            <span className="flex-1">Phiên học mới</span>
+            <span className="text-[10px] font-semibold bg-primary/10 text-primary px-1.5 py-0.5 rounded-full">Mới</span>
+          </a>
+          {MORE_ITEMS.map(({ icon, label, path, badge }) => (
             <a
               key={label}
               href="#"
@@ -170,41 +257,51 @@ export default function DashboardLayout() {
               className={navCls(label)}
             >
               <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>{icon}</span>
-              {label}
+              <span className="flex-1">{label}</span>
+              {badge && (
+                <span className="text-[10px] font-semibold bg-primary/10 text-primary px-1.5 py-0.5 rounded-full">{badge}</span>
+              )}
             </a>
           ))}
+          </>
+          )}
 
           {/* Đang học */}
+          {sidebarMode === 'home' && (
           <div className="pt-4">
+            <hr className="border-t border-outline-variant/50 mx-3 mb-3" />
             <p className="px-3 pb-1 text-[11px] font-semibold text-secondary uppercase tracking-wider">Đang học</p>
-            {STUDYING.map(({ icon, title }) => (
+            {STUDYING.map(({ icon, title, status }) => (
               <a
                 key={title}
                 href="#"
                 className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-on-surface hover:bg-surface-container-low transition-colors"
               >
                 <span className="material-symbols-outlined text-secondary" style={{ fontSize: '15px' }}>{icon}</span>
-                <span className="truncate text-[13px]">{title}</span>
+                <span className="truncate text-[13px] flex-1">{title}</span>
+                {status && <span className="text-[10px] text-secondary shrink-0">{status}</span>}
               </a>
             ))}
           </div>
-
-          {/* Điểm luyện đề */}
-          <div className="pt-3 pb-1">
-            <p className="px-3 pb-2 text-[11px] font-semibold text-secondary uppercase tracking-wider">Điểm luyện đề</p>
-            <div className="px-3 grid grid-cols-2 gap-1.5">
-              {SCORES.map(({ skill, pts, max }) => (
-                <div key={skill} className="bg-surface-container rounded-lg px-2 py-1.5">
-                  <p className="text-[10px] text-secondary mb-0.5">{skill}</p>
-                  <p className="text-[14px] font-bold text-primary leading-tight">{pts.toLocaleString()}</p>
-                  <div className="mt-1 h-1 bg-surface-container-high rounded-full overflow-hidden">
-                    <div className="bg-primary h-full rounded-full" style={{ width: `${(pts / max) * 100}%` }} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          )}
         </nav>
+
+        {/* Nhắc học qua Zalo */}
+        {sidebarMode === 'home' && (
+        <div className="px-3 py-2 mx-2 mb-1 flex items-center gap-2 rounded-lg bg-white">
+          <span className="material-symbols-outlined text-secondary" style={{ fontSize: '16px' }}>notifications</span>
+          <span className="flex-1 text-[12.5px] text-on-surface">Nhắc học qua Zalo</span>
+          <button
+            onClick={() => setZaloReminder(z => !z)}
+            className={`relative w-9 h-5 rounded-full transition-colors shrink-0 ${zaloReminder ? 'bg-primary' : 'bg-outline-variant'}`}
+          >
+            <span
+              className="absolute top-0.5 w-4 h-4 bg-white rounded-full transition-all"
+              style={{ left: zaloReminder ? '18px' : '2px' }}
+            />
+          </button>
+        </div>
+        )}
 
         {/* User profile */}
         <div className="px-2 pt-2 border-t border-outline-variant">
@@ -229,14 +326,14 @@ export default function DashboardLayout() {
       {!sidebarOpen && (
         <button
           onClick={() => setSidebarOpen(true)}
-          className="fixed top-4 left-3 z-[60] w-7 h-7 flex items-center justify-center rounded-lg border border-outline-variant bg-white hover:bg-surface-container transition-colors text-secondary hover:text-primary"
+          className="fixed top-4 left-4 z-[60] w-7 h-7 flex items-center justify-center rounded-lg border border-outline-variant bg-white hover:bg-surface-container transition-colors text-secondary hover:text-primary"
         >
           <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>left_panel_open</span>
         </button>
       )}
 
       {/* Content area */}
-      <div className={`min-h-screen transition-all duration-200 ${sidebarOpen ? 'ml-56' : 'ml-0'}`}>
+      <div className={`min-h-screen transition-all duration-200 ${sidebarOpen ? 'ml-[298px]' : 'ml-0'}`}>
         <main className="p-container-padding-desktop max-w-[1440px] mx-auto">
           <Outlet />
         </main>

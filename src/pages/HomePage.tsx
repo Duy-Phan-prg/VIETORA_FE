@@ -58,7 +58,7 @@ export default function HomePage() {
                 <div className="fb-icon">🤖</div>
                 <div className="fb-body">
                   <div className="fb-name">
-                    Vitora <span className="ai-tag">AI</span>
+                    <span className="brand-name">Vitora</span> <span className="ai-tag">AI</span>
                   </div>
                   <p className="fb-quote">{t.home.fbQuote}</p>
                 </div>

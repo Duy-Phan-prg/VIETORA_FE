@@ -9,7 +9,7 @@ export default function Header() {
     <nav className="navbar">
       <Link to="/" className="nav-logo">
         <img src={logo} alt="Vitora" className="logo-mark" />
-        <span>Vitora</span>
+        <span className="brand-name">Vitora</span>
       </Link>
 
       <div className="nav-links">
