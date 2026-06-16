@@ -6,34 +6,35 @@ export default function DashboardLayout() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [rightRailOpen, setRightRailOpen] = useState(true);
   const [practiceOpen, setPracticeOpen] = useState(false);
   const [practiceY, setPracticeY] = useState(0);
   const [skillOpen, setSkillOpen] = useState(false);
   const [skillY, setSkillY] = useState(0);
-  const [activeLabel, setActiveLabel] = useState('Lộ trình');
+  const [activeLabel, setActiveLabel] = useState('Roadmap');
   const [zaloReminder, setZaloReminder] = useState(true);
   const [sidebarMode, setSidebarMode] = useState<'home' | 'cowork'>('cowork');
 
   useEffect(() => {
     const map: Record<string, string> = {
-      '/mock-test': 'Thi thử',
-      '/progress':  'Tiến độ',
-      '/roadmap':   'Lộ trình',
-      '/notes':     'Kho kiến thức',
-      '/schedule':  'Lịch học',
-      '/friends':   'Bạn học',
-      '/settings':  'Tùy chỉnh',
+      '/mock-test': 'Mock Test',
+      '/progress':  'Progress',
+      '/roadmap':   'Roadmap',
+      '/notes':     'Knowledge Base',
+      '/schedule':  'Schedule',
+      '/friends':   'Study Buddies',
+      '/settings':  'Settings',
     };
     if (map[pathname]) setActiveLabel(map[pathname]);
-    else if (pathname.startsWith('/practice'))       setActiveLabel('Luyện đề');
-    else if (pathname.startsWith('/skill-training')) setActiveLabel('Kỹ năng');
+    else if (pathname.startsWith('/practice'))       setActiveLabel('Practice');
+    else if (pathname.startsWith('/skill-training')) setActiveLabel('Skills');
   }, [pathname]);
 
   function navCls(label: string) {
     const active = activeLabel === label;
     return `flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium ${
       active
-        ? 'bg-surface-container-high text-on-surface'
+        ? 'bg-[#1e3a5f] text-white'
         : 'text-on-surface hover:bg-surface-container'
     }`;
   }
@@ -42,21 +43,12 @@ export default function DashboardLayout() {
     <div className="bg-[#fafafa] text-on-surface font-body-md overflow-x-hidden">
 
       {/* ── Sidebar ─────────────────────────────── */}
-      <aside className={`fixed left-3 top-3 bottom-3 bg-white border border-outline-variant rounded-2xl shadow-md
-        flex flex-col py-4 z-50 transition-all duration-200 overflow-hidden
-        ${sidebarOpen ? 'w-[230px]' : 'w-0 border-0 shadow-none'}`}
-      >
+      <aside className={`fixed left-0 top-0 bottom-0 bg-white shadow-md flex flex-col py-4 z-50 overflow-hidden transition-all duration-200 ${
+        sidebarOpen ? 'w-[200px]' : 'w-0'
+      }`}>
         {/* Logo */}
-        <div className="flex items-center justify-between px-4 mb-4">
-          <div className="flex items-center gap-2">
-            <span className="brand-name text-[19px] text-primary tracking-tight">Vietora</span>
-          </div>
-          <button
-            onClick={() => setSidebarOpen(false)}
-            className="w-7 h-7 flex items-center justify-center rounded-lg text-secondary hover:text-primary hover:bg-surface-container transition-colors"
-          >
-            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>left_panel_close</span>
-          </button>
+        <div className="flex items-center px-4 mb-4">
+          <span className="brand-name text-[19px] text-[#1e3a5f] tracking-tight whitespace-nowrap">Vietora</span>
         </div>
 
         {/* Nav */}
@@ -66,39 +58,39 @@ export default function DashboardLayout() {
           <div className="flex items-center bg-surface-container rounded-lg p-0.5 mb-3">
             <button
               onClick={() => setSidebarMode('home')}
-              className={`flex-1 px-3 py-1.5 rounded-md text-[12.5px] transition-colors ${
+              className={`flex-1 px-2 py-1.5 rounded-md text-[12.5px] whitespace-nowrap transition-colors ${
                 sidebarMode === 'home'
                   ? 'bg-white text-on-surface font-semibold shadow-sm'
                   : 'text-secondary font-medium'
               }`}
             >
-              Học
+              Learn
             </button>
             <button
               onClick={() => setSidebarMode('cowork')}
-              className={`flex-1 px-3 py-1.5 rounded-md text-[12.5px] transition-colors ${
+              className={`flex-1 px-2 py-1.5 rounded-md text-[12.5px] whitespace-nowrap transition-colors ${
                 sidebarMode === 'cowork'
                   ? 'bg-white text-on-surface font-semibold shadow-sm'
                   : 'text-secondary font-medium'
               }`}
             >
-              Cùng học
+              Together
             </button>
           </div>
 
           {sidebarMode === 'home' && (
           <>
-          {/* Lộ trình */}
+          {/* Roadmap */}
           <a
             href="#"
-            onClick={(e) => { e.preventDefault(); setActiveLabel('Lộ trình'); navigate('/roadmap'); }}
-            className={navCls('Lộ trình')}
+            onClick={(e) => { e.preventDefault(); setActiveLabel('Roadmap'); navigate('/roadmap'); }}
+            className={navCls('Roadmap')}
           >
             <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>menu_book</span>
-            Lộ trình
+            Roadmap
           </a>
 
-          {/* Kỹ năng — popover */}
+          {/* Skills — popover */}
           <div className="relative">
             <a
               href="#"
@@ -107,37 +99,37 @@ export default function DashboardLayout() {
                 setSkillY((e.currentTarget as HTMLElement).getBoundingClientRect().top);
                 setSkillOpen(o => !o);
               }}
-              className={navCls('Kỹ năng')}
+              className={navCls('Skills')}
             >
               <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>fitness_center</span>
-              <span className="flex-1">Kỹ năng</span>
+              <span className="flex-1">Skills</span>
               <span className="material-symbols-outlined text-secondary" style={{ fontSize: '16px' }}>chevron_right</span>
             </a>
             {skillOpen && (
               <>
                 <div className="fixed inset-0 z-40" onClick={() => setSkillOpen(false)} />
                 <div
-                  className="fixed z-50 bg-white border border-outline-variant rounded-xl shadow-md py-1.5 w-44"
+                  className="fixed z-50 bg-white border border-[#1e3a5f]/15 rounded-xl shadow-lg p-1.5 w-44"
                   style={{ left: '258px', top: skillY }}
                 >
                   {[
-                    { label: 'Nghe',  icon: 'headphones', path: '/skill-training/listening' },
-                    { label: 'Đọc',   icon: 'menu_book',  path: '/skill-training/reading'   },
-                    { label: 'Viết',  icon: 'edit_note',  path: '/skill-training/writing'   },
-                    { label: 'Nói',   icon: 'mic',        path: '/skill-training/speaking'  },
+                    { label: 'Listening', icon: 'headphones', path: '/skill-training/listening' },
+                    { label: 'Reading',   icon: 'menu_book',  path: '/skill-training/reading'   },
+                    { label: 'Writing',   icon: 'edit_note',  path: '/skill-training/writing'   },
+                    { label: 'Speaking',  icon: 'mic',        path: '/skill-training/speaking'  },
                   ].map(({ label, icon, path }) => (
                     <a
                       key={label}
                       href="#"
                       onClick={(e) => {
                         e.preventDefault();
-                        setActiveLabel('Kỹ năng');
+                        setActiveLabel('Skills');
                         navigate(path);
                         setSkillOpen(false);
                       }}
-                      className="flex items-center gap-3 px-3 py-2 text-[13.5px] text-on-surface hover:bg-surface-container-low transition-colors"
+                      className="flex items-center gap-3 px-3 py-2 rounded-lg text-[13.5px] text-on-surface hover:bg-[#1e3a5f] hover:text-white transition-colors group"
                     >
-                      <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>{icon}</span>
+                      <span className="material-symbols-outlined text-[#1e3a5f] group-hover:text-[#f6b93b]" style={{ fontSize: '16px' }}>{icon}</span>
                       {label}
                     </a>
                   ))}
@@ -146,7 +138,7 @@ export default function DashboardLayout() {
             )}
           </div>
 
-          {/* Luyện đề — popover */}
+          {/* Practice — popover */}
           <div className="relative">
             <a
               href="#"
@@ -155,61 +147,61 @@ export default function DashboardLayout() {
                 setPracticeY((e.currentTarget as HTMLElement).getBoundingClientRect().top);
                 setPracticeOpen(o => !o);
               }}
-              className={navCls('Luyện đề')}
+              className={navCls('Practice')}
             >
               <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>edit_note</span>
-              <span className="flex-1">Luyện đề</span>
+              <span className="flex-1">Practice</span>
               <span className="material-symbols-outlined text-secondary" style={{ fontSize: '16px' }}>chevron_right</span>
             </a>
             {practiceOpen && (
               <>
                 <div className="fixed inset-0 z-40" onClick={() => setPracticeOpen(false)} />
                 <div
-                  className="fixed z-50 bg-white border border-outline-variant rounded-xl shadow-md py-1.5 w-44"
+                  className="fixed z-50 bg-white border border-[#1e3a5f]/15 rounded-xl shadow-lg p-1.5 w-44"
                   style={{ left: '258px', top: practiceY }}
                 >
                   <a
                     href="#"
                     onClick={(e) => {
                       e.preventDefault();
-                      setActiveLabel('Luyện đề');
+                      setActiveLabel('Practice');
                       navigate('/practice');
                       setPracticeOpen(false);
                     }}
-                    className="flex items-center gap-3 px-3 py-2 text-[13.5px] text-on-surface hover:bg-surface-container-low transition-colors"
+                    className="flex items-center gap-3 px-3 py-2 rounded-lg text-[13.5px] text-on-surface hover:bg-[#1e3a5f] hover:text-white transition-colors group"
                   >
-                    <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>menu_book</span>
-                    Đề Cambridge
+                    <span className="material-symbols-outlined text-[#1e3a5f] group-hover:text-[#f6b93b]" style={{ fontSize: '16px' }}>menu_book</span>
+                    Cambridge Tests
                   </a>
                 </div>
               </>
             )}
           </div>
 
-          {/* Thi thử */}
+          {/* Mock Test */}
           <a
             href="#"
-            onClick={(e) => { e.preventDefault(); setActiveLabel('Thi thử'); navigate('/mock-test'); }}
-            className={navCls('Thi thử')}
+            onClick={(e) => { e.preventDefault(); setActiveLabel('Mock Test'); navigate('/mock-test'); }}
+            className={navCls('Mock Test')}
           >
             <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>fact_check</span>
-            Thi thử
+            Mock Test
           </a>
 
-          {/* Tiến độ */}
+          {/* Progress */}
           <a
             href="#"
-            onClick={(e) => { e.preventDefault(); setActiveLabel('Tiến độ'); navigate('/progress'); }}
-            className={navCls('Tiến độ')}
+            onClick={(e) => { e.preventDefault(); setActiveLabel('Progress'); navigate('/progress'); }}
+            className={navCls('Progress')}
           >
             <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>bar_chart</span>
-            Tiến độ
+            Progress
           </a>
 
           </>
           )}
 
-          {/* Cowork — Thêm items moved here */}
+          {/* Cowork — "More" items moved here */}
           {sidebarMode === 'cowork' && (
           <>
           {MORE_ITEMS.map(({ icon, label, path, badge }) => (
@@ -222,21 +214,23 @@ export default function DashboardLayout() {
               <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>{icon}</span>
               <span className="flex-1">{label}</span>
               {badge && (
-                <span className="text-[10px] font-semibold bg-primary/10 text-primary px-1.5 py-0.5 rounded-full">{badge}</span>
+                <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded-full ${
+                  activeLabel === label ? 'bg-white/20 text-white' : 'bg-[#f6b93b]/25 text-[#1e3a5f]'
+                }`}>{badge}</span>
               )}
             </a>
           ))}
           </>
           )}
 
-          {/* Ghim */}
+          {/* Pinned */}
           {sidebarMode === 'home' && (
           <div className="pt-4">
             <hr className="border-t border-outline-variant/50 mx-3 mb-3" />
-            <p className="px-3 pb-1 text-[11px] font-semibold text-secondary uppercase tracking-wider">Ghim</p>
+            <p className="px-3 pb-1 text-[11px] font-semibold text-secondary uppercase tracking-wider">Pinned</p>
             {[
               { icon: 'description', title: 'Notes TFNG' },
-              { icon: 'menu_book',   title: 'Bộ từ Writing' },
+              { icon: 'menu_book',   title: 'Writing Vocabulary Set' },
             ].map(({ icon, title }) => (
               <a
                 key={title}
@@ -250,11 +244,11 @@ export default function DashboardLayout() {
           </div>
           )}
 
-          {/* Đang học */}
+          {/* Currently Studying */}
           {sidebarMode === 'home' && (
           <div className="pt-4">
             <hr className="border-t border-outline-variant/50 mx-3 mb-3" />
-            <p className="px-3 pb-1 text-[11px] font-semibold text-secondary uppercase tracking-wider">Đang học</p>
+            <p className="px-3 pb-1 text-[11px] font-semibold text-secondary uppercase tracking-wider">Currently Studying</p>
             {STUDYING.map(({ icon, title, status }) => (
               <a
                 key={title}
@@ -270,14 +264,14 @@ export default function DashboardLayout() {
           )}
         </nav>
 
-        {/* Nhắc học qua Zalo */}
+        {/* Zalo study reminders */}
         {sidebarMode === 'home' && (
         <div className="px-3 py-2 mx-2 mb-1 flex items-center gap-2 rounded-lg bg-white">
           <span className="material-symbols-outlined text-secondary" style={{ fontSize: '16px' }}>notifications</span>
-          <span className="flex-1 text-[12.5px] text-on-surface">Nhắc học qua Zalo</span>
+          <span className="flex-1 text-[12.5px] text-on-surface">Zalo study reminders</span>
           <button
             onClick={() => setZaloReminder(z => !z)}
-            className={`relative w-9 h-5 rounded-full transition-colors shrink-0 ${zaloReminder ? 'bg-primary' : 'bg-outline-variant'}`}
+            className={`relative w-9 h-5 rounded-full transition-colors shrink-0 ${zaloReminder ? 'bg-[#1e3a5f]' : 'bg-outline-variant'}`}
           >
             <span
               className="absolute top-0.5 w-4 h-4 bg-white rounded-full transition-all"
@@ -294,11 +288,11 @@ export default function DashboardLayout() {
             className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-container-low transition-colors"
           >
             {/* Avatar initials fallback */}
-            <div className="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 text-[13px] font-bold">
+            <div className="w-8 h-8 rounded-full bg-[#1e3a5f] text-white flex items-center justify-center shrink-0 text-[13px] font-bold">
               QA
             </div>
             <div className="text-left flex-1 min-w-0">
-              <p className="text-[13px] font-semibold text-primary truncate leading-tight">Quốc Anh</p>
+              <p className="text-[13px] font-semibold text-[#1e3a5f] truncate leading-tight">Quoc Anh</p>
               <p className="text-[11px] text-secondary truncate leading-tight">Band 7.5</p>
             </div>
             <span className="material-symbols-outlined text-secondary" style={{ fontSize: '16px' }}>more_horiz</span>
@@ -306,25 +300,30 @@ export default function DashboardLayout() {
         </div>
       </aside>
 
-      {/* Open sidebar button */}
-      {!sidebarOpen && (
-        <button
-          onClick={() => setSidebarOpen(true)}
-          className="fixed top-4 left-4 z-[60] w-7 h-7 flex items-center justify-center rounded-lg border border-outline-variant bg-white hover:bg-surface-container transition-colors text-secondary hover:text-primary"
-        >
-          <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>left_panel_open</span>
-        </button>
-      )}
+      {/* Sidebar toggle */}
+      <button
+        onClick={() => setSidebarOpen(o => !o)}
+        className={`fixed top-5 z-50 w-8 h-8 flex items-center justify-center rounded-full border border-outline-variant bg-white shadow-sm text-secondary hover:text-[#1e3a5f] hover:border-[#1e3a5f] transition-all duration-200 ${
+          sidebarOpen ? 'left-[188px]' : 'left-2'
+        }`}
+      >
+        <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>
+          {sidebarOpen ? 'chevron_left' : 'chevron_right'}
+        </span>
+      </button>
 
       {/* Content area */}
-      <div className={`min-h-screen transition-all duration-200 ${sidebarOpen ? 'ml-[246px]' : 'ml-0'}`}>
+      <div className={`min-h-screen transition-all duration-200 ${sidebarOpen ? 'ml-[200px]' : 'ml-0'}`}>
         <main className="pt-16 pr-[96px] pb-16 pl-6 max-w-[1280px] mx-auto">
           <Outlet />
         </main>
       </div>
 
       {/* ── Right icon rail ─────────────────────── */}
-      <aside className="fixed right-3 top-1/2 -translate-y-1/2 w-14 bg-white border border-outline-variant rounded-2xl shadow-md flex flex-col items-center py-3 z-50">
+      <aside className={`fixed right-3 top-1/2 -translate-y-1/2 bg-white border border-outline-variant rounded-2xl shadow-md flex flex-col items-center py-3 z-50 overflow-hidden transition-all duration-200 ${
+        rightRailOpen ? 'w-14' : 'w-12'
+      }`}>
+        {rightRailOpen && (
         <div className="flex flex-col items-center gap-2">
           {[
             { icon: 'assignment_turned_in', badge: 3,    active: true  },
@@ -337,7 +336,7 @@ export default function DashboardLayout() {
             <button
               key={i}
               className={`relative w-10 h-10 flex items-center justify-center rounded-xl transition-colors ${
-                active ? 'bg-primary/10 text-primary' : 'text-secondary hover:bg-surface-container hover:text-on-surface'
+                active ? 'bg-[#1e3a5f] text-white' : 'text-secondary hover:bg-surface-container hover:text-on-surface'
               }`}
             >
               <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>{icon}</span>
@@ -352,9 +351,15 @@ export default function DashboardLayout() {
             </button>
           ))}
         </div>
-        <div className="w-8 border-t border-outline-variant/60 mb-2" />
-        <button className="w-10 h-10 flex items-center justify-center rounded-xl text-secondary hover:bg-surface-container hover:text-on-surface transition-colors">
-          <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>chevron_left</span>
+        )}
+        {rightRailOpen && <div className="w-8 border-t border-outline-variant/60 mb-2 mt-2" />}
+        <button
+          onClick={() => setRightRailOpen(o => !o)}
+          className="w-10 h-10 flex items-center justify-center rounded-xl text-secondary hover:bg-surface-container hover:text-on-surface transition-colors"
+        >
+          <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>
+            {rightRailOpen ? 'chevron_left' : 'chevron_right'}
+          </span>
         </button>
       </aside>
 

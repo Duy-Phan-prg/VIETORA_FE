@@ -10,7 +10,7 @@ export default function SkillDetailPage() {
   if (!meta) {
     return (
       <div className="flex flex-col items-center justify-center" style={{ minHeight: 300 }}>
-        <p className="text-secondary">Kỹ năng không tồn tại.</p>
+        <p className="text-secondary">Skill not found.</p>
       </div>
     );
   }
@@ -30,7 +30,7 @@ export default function SkillDetailPage() {
         </span>
         <div>
           <h1 className="brand-name text-[24px] text-primary leading-tight">{meta.label}</h1>
-          <p className="text-[13px] text-secondary">{meta.topics.length} chủ đề</p>
+          <p className="text-[13px] text-secondary">{meta.topics.length} topics</p>
         </div>
       </div>
 
@@ -50,7 +50,7 @@ export default function SkillDetailPage() {
               <p className="text-[12.5px] text-secondary mt-0.5">{topic.desc}</p>
             </div>
             <div className="text-right shrink-0">
-              <p className="text-[12px] text-secondary">{topic.lessonCount} bài học</p>
+              <p className="text-[12px] text-secondary">{topic.lessonCount} lessons</p>
               <span className="material-symbols-outlined text-secondary" style={{ fontSize: '18px' }}>chevron_right</span>
             </div>
           </button>

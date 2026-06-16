@@ -2,30 +2,30 @@ const SUGGESTIONS = [
   {
     icon: 'headphones',
     tag: 'Listening',
-    title: 'Luyện Section 4 — Academic Monologue',
-    desc: 'Dựa trên lỗi sai gần đây, bạn cần luyện thêm dạng điền số liệu trong bài độc thoại học thuật.',
-    cta: 'Bắt đầu luyện',
+    title: 'Practice Section 4 — Academic Monologue',
+    desc: 'Based on your recent mistakes, you should practice more number-filling questions in academic monologues.',
+    cta: 'Start Practicing',
   },
   {
     icon: 'edit_note',
     tag: 'Writing',
     title: 'Task 2 — Discuss Both Views',
-    desc: 'Band hiện tại của bạn là 6.5. AI gợi ý tập trung vào cohesion và linking words để lên 7.0.',
-    cta: 'Xem bài mẫu',
+    desc: "Your current band is 6.5. AI suggests focusing on cohesion and linking words to reach 7.0.",
+    cta: 'View Sample Essay',
   },
   {
     icon: 'record_voice_over',
     tag: 'Speaking',
     title: 'Part 2 — Describe a place',
-    desc: 'Bạn hay bỏ âm cuối khi nói nhanh. Thử bài luyện phát âm này để cải thiện fluency.',
-    cta: 'Luyện ngay',
+    desc: "You tend to drop final sounds when speaking quickly. Try this pronunciation drill to improve fluency.",
+    cta: 'Practice Now',
   },
 ];
 
 const CHAT_HISTORY = [
-  { role: 'ai',   text: 'Xin chào! Mình là Miro 🐱 — trợ lý AI của Vietora. Hôm nay bạn muốn luyện kỹ năng gì?' },
-  { role: 'user', text: 'Cho mình vài gợi ý để cải thiện Writing Task 2.' },
-  { role: 'ai',   text: 'Dựa trên lịch sử luyện tập, bạn đang ở Band 6.5. Để lên 7.0, mình gợi ý: (1) Luyện viết topic sentence rõ ràng hơn, (2) Dùng cohesive devices đa dạng, (3) Tránh lặp từ — dùng paraphrase nhiều hơn nhé!' },
+  { role: 'ai',   text: "Hi! I'm Miro 🐱 — Vietora's AI assistant. Which skill would you like to practice today?" },
+  { role: 'user', text: 'Give me some tips to improve my Writing Task 2.' },
+  { role: 'ai',   text: "Based on your practice history, you're at Band 6.5. To reach 7.0, I suggest: (1) Write clearer topic sentences, (2) Use a wider variety of cohesive devices, (3) Avoid repetition — use more paraphrasing!" },
 ];
 
 export default function AITipsPage() {
@@ -34,8 +34,8 @@ export default function AITipsPage() {
 
       {/* Header */}
       <div>
-        <h1 className="text-[24px] font-bold text-primary mb-1">Gợi ý AI</h1>
-        <p className="text-[14px] text-secondary">Miro phân tích tiến độ của bạn và đề xuất bài học phù hợp nhất hôm nay.</p>
+        <h1 className="text-[24px] font-bold text-primary mb-1">AI Tips</h1>
+        <p className="text-[14px] text-secondary">Miro analyzes your progress and recommends the best lessons for you today.</p>
       </div>
 
       {/* Two-column layout */}
@@ -43,7 +43,7 @@ export default function AITipsPage() {
 
         {/* Left: suggestion cards */}
         <div className="space-y-4">
-          <h2 className="text-[15px] font-semibold text-on-surface">Đề xuất cho hôm nay</h2>
+          <h2 className="text-[15px] font-semibold text-on-surface">Today's Suggestions</h2>
           {SUGGESTIONS.map(({ icon, tag, title, desc, cta }) => (
             <div key={title} className="bg-white border border-outline-variant rounded-xl p-5 hover:bg-surface-container-lowest transition-colors cursor-pointer">
               <div className="flex items-start gap-4">
@@ -74,7 +74,7 @@ export default function AITipsPage() {
             </div>
             <div>
               <p className="text-[13px] font-semibold text-on-surface leading-tight">Miro AI</p>
-              <p className="text-[11px] text-secondary leading-tight">Trợ lý học IELTS cá nhân</p>
+              <p className="text-[11px] text-secondary leading-tight">Your personal IELTS study assistant</p>
             </div>
             <div className="ml-auto flex items-center gap-1.5">
               <span className="w-2 h-2 bg-green-500 rounded-full inline-block" />
@@ -105,7 +105,7 @@ export default function AITipsPage() {
             <div className="flex items-center gap-2 bg-surface-container rounded-xl px-4 py-2.5">
               <input
                 type="text"
-                placeholder="Hỏi Miro bất cứ điều gì..."
+                placeholder="Ask Miro anything..."
                 className="flex-1 bg-transparent text-[13px] text-on-surface placeholder:text-secondary outline-none"
               />
               <button className="w-7 h-7 bg-primary text-on-primary rounded-lg flex items-center justify-center hover:opacity-90 transition-opacity shrink-0">

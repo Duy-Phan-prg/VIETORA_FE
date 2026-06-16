@@ -3,13 +3,16 @@ import { useLanguage } from '../../contexts/LanguageContext';
 import logo from '../../assets/logo/vietora-logo.png';
 
 export default function Header() {
-  const { lang, setLang, t } = useLanguage();
+  const { t } = useLanguage();
 
   return (
+    <>
     <nav className="navbar">
       <Link to="/" className="nav-logo">
-        <img src={logo} alt="Vietora" className="logo-mark" />
-        <span className="brand-name">Vietora</span>
+        <span className="logo-badge">
+          <img src={logo} alt="Vietora" className="logo-mark" />
+        </span>
+        <span className="brand-wordmark">Vietora</span>
       </Link>
 
       <div className="nav-links">
@@ -20,23 +23,22 @@ export default function Header() {
       </div>
 
       <div className="nav-actions">
-        <div className="lang-toggle">
-          <button
-            className={`lang-btn ${lang === 'vi' ? 'active' : ''}`}
-            onClick={() => setLang('vi')}
-          >
-            VI
-          </button>
-          <button
-            className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
-            onClick={() => setLang('en')}
-          >
-            EN
-          </button>
-        </div>
         <Link to="/login" className="nav-signin">{t.nav.signIn}</Link>
         <button className="btn-nav">{t.nav.getStarted}</button>
       </div>
     </nav>
+
+    <div className="marquee-bar">
+      <div className="marquee-track">
+        {Array.from({ length: 2 }).map((_, i) => (
+          <div className="marquee-content" key={i}>
+            <span>IELTS Band 7+ Guaranteed</span>
+            <span>Free Mock Test Available</span>
+            <span>Join 10,000+ Learners</span>
+          </div>
+        ))}
+      </div>
+    </div>
+    </>
   );
 }

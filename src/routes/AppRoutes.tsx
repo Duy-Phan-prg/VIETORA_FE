@@ -47,10 +47,10 @@ export default function AppRoutes() {
         <Route path="/skill-training/:skill" element={<SkillDetailPage />} />
 
         {/* New nav items */}
-        <Route path="/skill-map" element={<ComingSoonPage title="Skill map của tôi" icon="map" />} />
-        <Route path="/mock-test" element={<ComingSoonPage title="Thi thử" icon="fact_check" />} />
-        <Route path="/schedule"  element={<ComingSoonPage title="Lịch học" icon="calendar_month" />} />
-        <Route path="/settings"  element={<ComingSoonPage title="Tùy chỉnh" icon="tune" />} />
+        <Route path="/skill-map" element={<ComingSoonPage title="My Skill Map" icon="map" />} />
+        <Route path="/mock-test" element={<ComingSoonPage title="Mock Test" icon="fact_check" />} />
+        <Route path="/schedule"  element={<ComingSoonPage title="Schedule" icon="calendar_month" />} />
+        <Route path="/settings"  element={<ComingSoonPage title="Settings" icon="tune" />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />

@@ -6,7 +6,7 @@ interface ComingSoonPageProps {
 
 export default function ComingSoonPage({
   title,
-  description = 'Tính năng này đang được phát triển, hãy quay lại sau nhé!',
+  description = 'This feature is under development, please check back later!',
   icon = 'auto_awesome',
 }: ComingSoonPageProps) {
   return (

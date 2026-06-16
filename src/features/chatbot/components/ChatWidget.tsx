@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { chatbotService } from '../services/chatbotService';
 import type { ChatMessage } from '../types/chatbot.types';
+import logo from '../../../assets/logo/vietora-logo.png';
 
 interface ChatWidgetProps {
   open: boolean;
@@ -11,7 +12,7 @@ const INITIAL_MESSAGES: ChatMessage[] = [
   {
     id: 0,
     role: 'ai',
-    text: 'Xin chào! Mình là Miro 🐱 — trợ lý AI của Vietora. Hôm nay bạn muốn luyện kỹ năng gì?',
+    text: "Hi! I'm Vietora's AI assistant — your personalized AI-powered IELTS prep platform. I can help you explore features, your learning roadmap, or answer any questions. What can I help you with today?",
     createdAt: new Date().toISOString(),
   },
 ];
@@ -46,7 +47,7 @@ export default function ChatWidget({ open, onClose }: ChatWidgetProps) {
         {
           id: Date.now() + 1,
           role: 'ai',
-          text: 'Miro đang gặp sự cố kết nối, bạn thử lại sau nhé!',
+          text: "The assistant is having connection issues — please try again later!",
           createdAt: new Date().toISOString(),
         },
       ]);
@@ -62,16 +63,16 @@ export default function ChatWidget({ open, onClose }: ChatWidgetProps) {
   return (
     <div
       className="fixed z-[60] bg-white border border-outline-variant rounded-2xl shadow-xl flex flex-col"
-      style={{ bottom: '120px', right: '64px', width: '360px', height: '480px' }}
+      style={{ bottom: '120px', right: '90px', width: '360px', height: '480px' }}
     >
       {/* Header */}
       <div className="flex items-center gap-3 px-5 py-4 border-b border-outline-variant">
-        <div className="w-8 h-8 bg-surface-container rounded-full flex items-center justify-center border border-outline-variant">
-          <span className="material-symbols-outlined text-primary" style={{ fontSize: '16px' }}>smart_toy</span>
+        <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center border border-outline-variant">
+          <img src={logo} alt="Vietora" className="w-full h-full object-cover" style={{ transform: 'scale(2)' }} />
         </div>
         <div>
-          <p className="text-[13px] font-semibold text-on-surface leading-tight">Miro AI</p>
-          <p className="text-[11px] text-secondary leading-tight">Trợ lý học IELTS cá nhân</p>
+          <p className="text-[13px] font-semibold text-on-surface leading-tight">Vietora AI</p>
+          <p className="text-[11px] text-secondary leading-tight">Your personal IELTS prep assistant</p>
         </div>
         <button
           onClick={onClose}
@@ -86,8 +87,8 @@ export default function ChatWidget({ open, onClose }: ChatWidgetProps) {
         {messages.map(({ id, role, text }) => (
           <div key={id} className={`flex ${role === 'user' ? 'justify-end' : 'justify-start'}`}>
             {role === 'ai' && (
-              <div className="w-6 h-6 bg-surface-container rounded-full flex items-center justify-center shrink-0 mr-2 mt-0.5 border border-outline-variant">
-                <span className="material-symbols-outlined text-primary" style={{ fontSize: '12px' }}>smart_toy</span>
+              <div className="w-6 h-6 rounded-full overflow-hidden flex items-center justify-center shrink-0 mr-2 mt-0.5 border border-outline-variant">
+                <img src={logo} alt="Vietora" className="w-full h-full object-cover" style={{ transform: 'scale(2)' }} />
               </div>
             )}
             <div className={`max-w-[78%] px-4 py-2.5 rounded-2xl text-[13px] leading-relaxed ${
@@ -109,7 +110,7 @@ export default function ChatWidget({ open, onClose }: ChatWidgetProps) {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Hỏi Miro bất cứ điều gì..."
+            placeholder="Ask the AI assistant anything..."
             className="flex-1 bg-transparent text-[13px] text-on-surface placeholder:text-secondary outline-none"
           />
           <button

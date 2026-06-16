@@ -1,19 +1,19 @@
 const TREND_BARS = [40, 55, 45, 65, 60, 80, 70, 75, 65, 85];
 
 const STRENGTHS = [
-  { title: 'Từ vựng học thuật (Vocabulary)', desc: 'Sử dụng đa dạng các collocation phức tạp trong Speaking.' },
-  { title: 'Kỹ năng Listening (Section 1 & 4)', desc: 'Độ chính xác đạt 95% cho các bài điền thông tin chi tiết.' },
+  { title: 'Academic Vocabulary', desc: 'Uses a wide range of complex collocations in Speaking.' },
+  { title: 'Listening Skills (Section 1 & 4)', desc: '95% accuracy on detail-completion questions.' },
 ];
 
 const WEAKNESSES = [
-  { title: 'Phát âm âm cuối (Ending Sounds)', desc: 'Hay bỏ quên âm /s/ và /ed/ khi nói ở tốc độ nhanh.' },
-  { title: 'Reading: Matching Headings', desc: 'Gặp khó khăn trong việc phân biệt các ý chính gần giống nhau.' },
+  { title: 'Ending Sounds Pronunciation', desc: 'Often drops /s/ and /ed/ sounds when speaking quickly.' },
+  { title: 'Reading: Matching Headings', desc: 'Struggles to distinguish between similar main ideas.' },
 ];
 
 const RECENT_TESTS = [
-  { name: 'IELTS Listening Practice Test #12', date: '24 Th10, 2023', score: '8.5', done: true  },
-  { name: 'Cambridge 18 - Reading Test 1',     date: '22 Th10, 2023', score: '7.0', done: true  },
-  { name: 'IELTS Writing Task 2 - Education',  date: '20 Th10, 2023', score: '6.5', done: false },
+  { name: 'IELTS Listening Practice Test #12', date: 'Oct 24, 2023', score: '8.5', done: true  },
+  { name: 'Cambridge 18 - Reading Test 1',     date: 'Oct 22, 2023', score: '7.0', done: true  },
+  { name: 'IELTS Writing Task 2 - Education',  date: 'Oct 20, 2023', score: '6.5', done: false },
 ];
 
 export default function ProgressPage() {
@@ -23,17 +23,17 @@ export default function ProgressPage() {
       {/* Header */}
       <div className="flex justify-between items-end">
         <div>
-          <h1 className="text-[24px] font-bold text-primary mb-1">Tiến độ học tập</h1>
-          <p className="text-[14px] text-secondary">Phân tích kết quả học tập trong 30 ngày qua.</p>
+          <h1 className="text-[24px] font-bold text-primary mb-1">Learning Progress</h1>
+          <p className="text-[14px] text-secondary">An analysis of your study results over the last 30 days.</p>
         </div>
         <div className="flex gap-2">
           <button className="px-4 py-2 bg-surface-container-high rounded-xl text-[13px] font-medium hover:bg-surface-variant transition-colors flex items-center gap-2">
             <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>calendar_today</span>
-            30 ngày qua
+            Last 30 days
           </button>
           <button className="px-4 py-2 bg-primary text-on-primary rounded-xl text-[13px] font-medium hover:opacity-90 transition-opacity flex items-center gap-2">
             <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>download</span>
-            Xuất báo cáo
+            Export Report
           </button>
         </div>
       </div>
@@ -44,10 +44,10 @@ export default function ProgressPage() {
         {/* Bar chart */}
         <div className="bg-white border border-outline-variant rounded-xl p-6">
           <div className="flex justify-between items-center mb-8">
-            <h2 className="text-[18px] font-bold">Biểu đồ xu hướng</h2>
+            <h2 className="text-[18px] font-bold">Trend Chart</h2>
             <div className="flex items-center gap-2">
               <div className="w-2.5 h-2.5 bg-primary rounded-full" />
-              <span className="text-[11px] text-secondary uppercase tracking-wider">Điểm trung bình</span>
+              <span className="text-[11px] text-secondary uppercase tracking-wider">Average Score</span>
             </div>
           </div>
           <div>
@@ -62,14 +62,14 @@ export default function ProgressPage() {
               ))}
             </div>
             <div className="flex justify-between text-[10px] text-secondary mt-2">
-              <span>Tuần 1</span><span>Tuần 2</span><span>Tuần 3</span><span>Tuần 4</span>
+              <span>Week 1</span><span>Week 2</span><span>Week 3</span><span>Week 4</span>
             </div>
           </div>
         </div>
 
         {/* Skills target */}
         <div className="bg-white border border-outline-variant rounded-xl p-6 flex flex-col">
-          <h2 className="text-[18px] font-bold mb-6">Kỹ năng mục tiêu</h2>
+          <h2 className="text-[18px] font-bold mb-6">Target Skills</h2>
           <div className="flex-1 flex items-center justify-center">
             <div className="relative flex items-center justify-center"
               style={{ width: '176px', height: '176px', borderRadius: '50%', border: '4px solid #ededf2' }}>
@@ -87,11 +87,11 @@ export default function ProgressPage() {
           </div>
           <div className="mt-4 space-y-2">
             <div className="flex justify-between text-[13px]">
-              <span className="text-secondary">Gần đạt</span>
+              <span className="text-secondary">Almost There</span>
               <span className="font-semibold">Reading (8.0)</span>
             </div>
             <div className="flex justify-between text-[13px]">
-              <span className="text-secondary">Cần cải thiện</span>
+              <span className="text-secondary">Needs Improvement</span>
               <span className="font-semibold">Writing (6.5)</span>
             </div>
           </div>
@@ -103,7 +103,7 @@ export default function ProgressPage() {
         <div className="bg-white border border-outline-variant rounded-xl p-8">
           <div className="flex items-center gap-2 mb-6">
             <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#16a34a' }}>check_circle</span>
-            <h2 className="text-[18px] font-bold">Điểm mạnh</h2>
+            <h2 className="text-[18px] font-bold">Strengths</h2>
           </div>
           <ul className="space-y-4">
             {STRENGTHS.map(({ title, desc }) => (
@@ -121,7 +121,7 @@ export default function ProgressPage() {
         <div className="bg-white border border-outline-variant rounded-xl p-8">
           <div className="flex items-center gap-2 mb-6">
             <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#f97316' }}>error</span>
-            <h2 className="text-[18px] font-bold">Cần khắc phục</h2>
+            <h2 className="text-[18px] font-bold">Areas to Improve</h2>
           </div>
           <ul className="space-y-4">
             {WEAKNESSES.map(({ title, desc }) => (
@@ -140,9 +140,9 @@ export default function ProgressPage() {
       {/* Row 3: Recent Tests */}
       <div className="bg-white border border-outline-variant rounded-xl overflow-hidden">
         <div className="px-6 py-5 border-b border-outline-variant flex justify-between items-center">
-          <h2 className="text-[18px] font-bold">Lịch sử luyện tập gần đây</h2>
+          <h2 className="text-[18px] font-bold">Recent Practice History</h2>
           <a href="#" className="text-[13px] text-primary font-medium flex items-center gap-1 hover:underline">
-            Xem tất cả
+            View All
             <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>arrow_forward</span>
           </a>
         </div>
@@ -150,7 +150,7 @@ export default function ProgressPage() {
           <table className="w-full text-left">
             <thead>
               <tr className="bg-surface-container">
-                {['BÀI THI', 'NGÀY', 'ĐIỂM', 'TRẠNG THÁI', ''].map(col => (
+                {['TEST', 'DATE', 'SCORE', 'STATUS', ''].map(col => (
                   <th key={col} className="px-6 py-3 text-[11px] font-semibold text-secondary uppercase tracking-wider">{col}</th>
                 ))}
               </tr>
@@ -167,12 +167,12 @@ export default function ProgressPage() {
                     {done ? (
                       <span className="flex items-center gap-2 text-[13px]" style={{ color: '#16a34a' }}>
                         <span className="w-2 h-2 rounded-full inline-block" style={{ background: '#16a34a' }} />
-                        Hoàn thành
+                        Completed
                       </span>
                     ) : (
                       <span className="flex items-center gap-2 text-[13px] text-secondary">
                         <span className="w-2 h-2 bg-outline rounded-full inline-block" />
-                        Đang chấm
+                        Grading
                       </span>
                     )}
                   </td>

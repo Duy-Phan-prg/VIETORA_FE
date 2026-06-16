@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const CAM_BOOKS = Array.from({ length: 20 }, (_, i) => `Bộ đề Cambridge ${i + 1}`);
+const CAM_BOOKS = Array.from({ length: 20 }, (_, i) => `Cambridge Test Set ${i + 1}`);
 
 export default function PracticePage() {
   const [selectedBook, setSelectedBook] = useState<string | null>(null);
@@ -32,11 +32,11 @@ export default function PracticePage() {
             className="flex items-center gap-2 text-[13px] text-secondary hover:text-primary transition-colors self-start"
           >
             <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_back</span>
-            Quay lại
+            Back
           </button>
           <span className="material-symbols-outlined text-primary" style={{ fontSize: '64px' }}>menu_book</span>
           <h4 className="font-bold text-headline-md">{selectedBook}</h4>
-          <p className="text-secondary text-body-md max-w-sm">Nội dung {selectedBook} đang được cập nhật.</p>
+          <p className="text-secondary text-body-md max-w-sm">Content for {selectedBook} is coming soon.</p>
         </div>
       )}
     </div>
