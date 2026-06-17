@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import DashboardLayout from '../layouts/DashboardLayout';
 
@@ -10,23 +10,31 @@ import NotFoundPage from '../pages/NotFoundPage';
 import LoginPage from '../features/auth/pages/LoginPage';
 
 // Dashboard
-import DashboardPage from '../features/dashboard/pages/DashboardPage';
-import ProgressPage  from '../features/dashboard/pages/ProgressPage';
+import DashboardPage  from '../features/dashboard/pages/DashboardPage';
+import ProgressPage   from '../features/dashboard/pages/ProgressPage';
+import SkillRadarPage from '../features/dashboard/pages/SkillRadarPage';
 
-// Features
-import AITipsPage   from '../features/aitips/pages/AITipsPage';
-import NotesPage    from '../features/notes/pages/NotesPage';
-import PracticePage from '../features/quiz/pages/PracticePage';
-
-// Misc pages (still in pages/)
-import FriendsPage  from '../pages/FriendsPage';
-import RoadmapPage  from '../pages/RoadmapPage';
-
-// Skill Training
+// Learning
+import AITipsPage      from '../features/aitips/pages/AITipsPage';
+import PracticePage    from '../features/quiz/pages/PracticePage';
+import MockExamPage    from '../features/exam/pages/MockExamPage';
 import SkillDetailPage from '../features/skilltraining/pages/SkillDetailPage';
+import RoadmapPage     from '../pages/RoadmapPage';
 
-// Coming soon placeholders
-import ComingSoonPage from '../pages/ComingSoonPage';
+// Library
+import NotesPage       from '../features/notes/pages/NotesPage';
+import QuestionBankPage from '../features/notes/pages/QuestionBankPage';
+
+// Cowork
+import MyClassesPage      from '../features/classes/pages/MyClassesPage';
+import StudyPartnersPage  from '../features/classes/pages/StudyPartnersPage';
+import StudyCalendarPage  from '../features/classes/pages/StudyCalendarPage';
+import QuizCreatorPage    from '../features/classes/pages/QuizCreatorPage';
+import ClassAnalyticsPage from '../features/classes/pages/ClassAnalyticsPage';
+
+// Settings
+import AccountSettingsPage from '../features/settings/pages/AccountSettingsPage';
+
 
 export default function AppRoutes() {
   return (
@@ -35,22 +43,47 @@ export default function AppRoutes() {
       <Route path="/"      element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
 
-      {/* Protected — inside DashboardLayout */}
+      {/* Dashboard shell */}
       <Route element={<DashboardLayout />}>
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/ai-tips"   element={<AITipsPage />} />
-        <Route path="/practice"  element={<PracticePage />} />
-        <Route path="/progress"  element={<ProgressPage />} />
-        <Route path="/notes"     element={<NotesPage />} />
-        <Route path="/roadmap"              element={<RoadmapPage />} />
-        <Route path="/friends"              element={<FriendsPage />} />
-        <Route path="/skill-training/:skill" element={<SkillDetailPage />} />
+        {/* HOME — Overview */}
+        <Route path="/dashboard"   element={<DashboardPage />} />
+        <Route path="/skill-radar" element={<SkillRadarPage />} />
+        <Route path="/roadmap"     element={<RoadmapPage />} />
 
-        {/* New nav items */}
-        <Route path="/skill-map" element={<ComingSoonPage title="My Skill Map" icon="map" />} />
-        <Route path="/mock-test" element={<ComingSoonPage title="Mock Test" icon="fact_check" />} />
-        <Route path="/schedule"  element={<ComingSoonPage title="Schedule" icon="calendar_month" />} />
-        <Route path="/settings"  element={<ComingSoonPage title="Settings" icon="tune" />} />
+        {/* HOME — Train */}
+        <Route path="/skill-training/:skill" element={<SkillDetailPage />} />
+        <Route path="/practice"              element={<PracticePage />} />
+        <Route path="/mock-exam"             element={<MockExamPage />} />
+
+        {/* HOME — Library */}
+        <Route path="/study-materials" element={<NotesPage />} />
+        <Route path="/notes"           element={<NotesPage />} />   {/* legacy alias */}
+        <Route path="/question-bank"   element={<QuestionBankPage />} />
+
+        {/* HOME — Analytics */}
+        <Route path="/progress" element={<ProgressPage />} />
+        <Route path="/ai-tips"  element={<AITipsPage />} />
+
+        {/* COWORK — Classes */}
+        <Route path="/classes"     element={<MyClassesPage />} />
+        <Route path="/classes/:id" element={<MyClassesPage />} />
+
+        {/* COWORK — Community */}
+        <Route path="/partners"  element={<StudyPartnersPage />} />
+        <Route path="/friends"   element={<StudyPartnersPage />} />  {/* legacy alias */}
+        <Route path="/calendar"  element={<StudyCalendarPage />} />
+
+        {/* COWORK — Teacher */}
+        <Route path="/quiz-creator"     element={<QuizCreatorPage />} />
+        <Route path="/class-analytics"  element={<ClassAnalyticsPage />} />
+
+        {/* COWORK — System */}
+        <Route path="/settings" element={<AccountSettingsPage />} />
+
+        {/* Old route redirects */}
+        <Route path="/skill-map" element={<Navigate to="/skill-radar"     replace />} />
+        <Route path="/mock-test" element={<Navigate to="/mock-exam"       replace />} />
+        <Route path="/schedule"  element={<Navigate to="/calendar"        replace />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />

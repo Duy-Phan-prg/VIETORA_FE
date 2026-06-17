@@ -89,14 +89,19 @@ export default function HomePage() {
       <Footer />
 
       {/* Floating contact widgets */}
-      <div className="floating-contacts">
-        <a className="float-btn float-btn-feedback" href="#" aria-label="Feedback">
-          <span className="material-symbols-outlined">thumb_up</span>
-        </a>
-        <a className="float-btn float-btn-zalo" href="#" aria-label="Zalo chat">
-          Zalo
-        </a>
-        <button className="float-btn float-btn-zalo-feedback" aria-label="Chatbot" onClick={() => setChatOpen((prev) => !prev)}>
+      <div className="floating-contacts-group">
+        <div className="float-children">
+          <a className="float-btn float-btn-feedback" href="#" aria-label="Feedback">
+            <span className="material-symbols-outlined">thumb_up</span>
+          </a>
+          <a className="float-btn float-btn-zalo" href="#" aria-label="Zalo chat">
+            Zalo
+          </a>
+          <button className="float-btn float-btn-chatbot" aria-label="Chatbot" onClick={() => setChatOpen((prev) => !prev)}>
+            <span className="material-symbols-outlined">smart_toy</span>
+          </button>
+        </div>
+        <button className="float-btn float-btn-main" aria-label="Mở liên hệ">
           <img src={logo} alt="Vietora" className="float-btn-logo" />
         </button>
       </div>

@@ -14,6 +14,15 @@ export const MORE_ITEMS = [
   { icon: 'tune',           label: 'Settings',       path: '/settings' },
 ];
 
+// Cowork tab — Classes & Community
+export const COWORK_ITEMS = [
+  { icon: 'school',         label: 'Classes',        path: '/classes',  badge: 'New', section: 'classes'   },
+  { icon: 'group',          label: 'Study Buddies',  path: '/friends',                section: 'community' },
+  { icon: 'calendar_month', label: 'Schedule',       path: '/schedule',               section: 'community' },
+  { icon: 'push_pin',       label: 'Knowledge Base', path: '/notes',                  section: 'knowledge' },
+  { icon: 'tune',           label: 'Settings',       path: '/settings',               section: 'system'    },
+];
+
 export const SCORES = [
   { skill: 'Listening', pts: 1240, max: 2000 },
   { skill: 'Reading',   pts: 890,  max: 2000 },

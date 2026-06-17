@@ -2,230 +2,185 @@ import { SCORES, STUDYING } from '../../../constants/dashboard';
 
 export default function DashboardPage() {
   return (
-    <div className="space-y-stack-lg">
+    <div className="space-y-6">
 
-      {/* Welcome Banner */}
-      <section
-        className="relative overflow-hidden text-white p-10 rounded-xl"
-        style={{ background: 'linear-gradient(135deg, #1e3a5f 0%, #2d5485 100%)' }}
-      >
-        <div className="relative z-10 max-w-2xl">
-          <span className="inline-block font-label-code text-label-code text-[#1e3a5f] uppercase tracking-widest mb-3 px-3 py-1 rounded-full bg-[#f6b93b] font-bold">
+      {/* Banner */}
+      <section className="relative overflow-hidden rounded-2xl bg-primary text-white p-8">
+        <div className="relative z-10">
+          <span className="inline-block text-[11px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-accent text-primary mb-3">
             Welcome Back
           </span>
-          <h3 className="font-bold text-display-lg-mobile md:text-display-lg mb-4">
+          <h1 className="text-[26px] font-bold leading-snug mb-2">
             Welcome back, IELTS warrior!
-          </h3>
-          <p className="text-body-lg text-white/80 mb-6">
+          </h1>
+          <p className="text-[13px] text-white/70 mb-5 max-w-lg">
             You've completed 75% of your roadmap this week. Just 2 more mock tests to hit your Band 7.5 goal!
           </p>
-          <button className="px-8 py-3 bg-[#f6b93b] text-[#1e3a5f] rounded-xl font-bold hover:bg-[#ffc94d] transition-colors">
+          <button className="px-5 py-2 bg-accent text-primary rounded-xl text-[13px] font-bold hover:opacity-90 transition-opacity">
             Continue Learning
           </button>
         </div>
-
-        {/* Decorative icon */}
-        <span
-          className="material-symbols-outlined absolute pointer-events-none select-none"
-          style={{ right: '-30px', bottom: '-50px', fontSize: '260px', color: 'rgba(255,255,255,0.08)' }}
-        >
+        <span className="material-symbols-outlined absolute right-[-20px] bottom-[-40px] select-none pointer-events-none text-white/5" style={{ fontSize: '220px' }}>
           school
         </span>
-
-        {/* Dot pattern */}
-        <div className="absolute right-0 top-0 w-1/2 h-full opacity-25 pointer-events-none">
-          <div
-            className="w-full h-full"
-            style={{
-              background: 'radial-gradient(circle, rgba(246,185,59,0.5) 1px, transparent 1px)',
-              backgroundSize: '20px 20px',
-            }}
-          />
-        </div>
       </section>
 
-      {/* Currently Studying & Scores */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+      {/* Currently Studying + Scores */}
+      <div className="grid grid-cols-2 gap-6">
 
         {/* Currently Studying */}
-        <div className="space-y-3">
-          <h4 className="font-headline-md text-headline-md">Currently Studying</h4>
+        <div>
+          <h2 className="text-[14px] font-bold text-primary mb-3">Currently Studying</h2>
           <div className="space-y-2">
             {STUDYING.map(({ icon, title, lesson, pct }) => (
-              <div
-                key={title}
-                className="flex items-center gap-4 p-4 bg-surface-container-lowest border border-outline-variant rounded-xl hover:bg-surface-container-low transition-colors cursor-pointer"
-              >
-                <div className="w-10 h-10 bg-surface-container rounded-xl flex items-center justify-center shrink-0 border border-outline-variant">
+              <div key={title} className="flex items-center gap-3 p-4 bg-white border border-outline-variant rounded-xl hover:bg-surface-container transition-colors cursor-pointer">
+                <div className="w-9 h-9 rounded-xl bg-primary/8 flex items-center justify-center shrink-0">
                   <span className="material-symbols-outlined text-primary" style={{ fontSize: '18px' }}>{icon}</span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-[13px] font-semibold text-primary truncate">{title}</p>
-                  <p className="text-[11px] text-secondary mb-1.5">{lesson}</p>
-                  <div className="h-1.5 bg-surface-container-high rounded-full overflow-hidden">
-                    <div className="bg-primary h-full rounded-full" style={{ width: `${pct}%` }} />
+                  <p className="text-[13px] font-semibold text-on-surface truncate">{title}</p>
+                  <p className="text-[11px] text-secondary mb-1">{lesson}</p>
+                  <div className="h-1 bg-outline-variant rounded-full overflow-hidden">
+                    <div className="h-full bg-primary rounded-full" style={{ width: `${pct}%` }} />
                   </div>
                 </div>
-                <span className="material-symbols-outlined text-secondary shrink-0" style={{ fontSize: '16px' }}>chevron_right</span>
+                <span className="material-symbols-outlined text-secondary" style={{ fontSize: '16px' }}>chevron_right</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Practice Scores */}
-        <div className="space-y-3">
-          <h4 className="font-headline-md text-headline-md">Practice Scores</h4>
-          <div className="grid grid-cols-2 gap-3">
+        <div>
+          <h2 className="text-[14px] font-bold text-primary mb-3">Practice Scores</h2>
+          <div className="grid grid-cols-2 gap-3 mb-3">
             {SCORES.map(({ skill, pts, max }) => (
-              <div key={skill} className="bg-surface-container-lowest border border-outline-variant rounded-xl p-4">
-                <p className="text-[11px] font-semibold text-secondary uppercase tracking-wider mb-2">{skill}</p>
-                <p className="text-[30px] font-bold text-primary leading-none">{pts.toLocaleString()}</p>
-                <p className="text-[11px] text-secondary mt-1">/{max.toLocaleString()} pts</p>
-                <div className="mt-2 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
-                  <div className="bg-primary h-full rounded-full transition-all" style={{ width: `${(pts / max) * 100}%` }} />
+              <div key={skill} className="bg-white border border-outline-variant rounded-xl p-4">
+                <p className="text-[10px] font-semibold text-secondary uppercase tracking-wider mb-1">{skill}</p>
+                <p className="text-[24px] font-bold text-on-surface leading-none">{pts.toLocaleString()}</p>
+                <p className="text-[11px] text-secondary mt-0.5">/{max.toLocaleString()} pts</p>
+                <div className="mt-2 h-1 bg-outline-variant rounded-full overflow-hidden">
+                  <div className="h-full bg-primary rounded-full" style={{ width: `${(pts / max) * 100}%` }} />
                 </div>
               </div>
             ))}
           </div>
-          <div className="bg-primary text-on-primary rounded-xl p-4 flex items-center justify-between">
+          <div className="bg-primary text-white rounded-xl p-4 flex items-center justify-between">
             <div>
-              <p className="text-[11px] text-on-primary/60 uppercase tracking-wider">Total Score</p>
-              <p className="text-[28px] font-bold leading-none mt-1">
+              <p className="text-[10px] text-white/50 uppercase tracking-wider">Total Score</p>
+              <p className="text-[24px] font-bold leading-none mt-1">
                 {SCORES.reduce((s, r) => s + r.pts, 0).toLocaleString()}
               </p>
             </div>
             <div className="text-right">
-              <p className="text-[11px] text-on-primary/60 uppercase tracking-wider">Best Skill</p>
-              <p className="text-[18px] font-bold leading-none mt-1 text-ai-purple">
+              <p className="text-[10px] text-white/50 uppercase tracking-wider">Best Skill</p>
+              <p className="text-[18px] font-bold leading-none mt-1 text-accent">
                 {SCORES.reduce((a, b) => a.pts > b.pts ? a : b).skill}
               </p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Courses In Progress */}
-      <section className="space-y-stack-md">
-        <h4 className="font-headline-md text-headline-md">Courses In Progress</h4>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+      <div>
+        <h2 className="text-[14px] font-bold text-primary mb-3">Courses In Progress</h2>
+        <div className="grid grid-cols-3 gap-4">
 
-          {/* Wide card */}
-          <div className="md:col-span-2 group relative bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:bg-surface-container-low cursor-pointer transition-colors">
+          <div className="col-span-2 bg-white border border-outline-variant rounded-xl overflow-hidden hover:shadow-sm transition-shadow cursor-pointer">
             <div className="flex h-full">
-              <div className="w-2/5 relative bg-surface-container flex items-center justify-center">
-                <span className="material-symbols-outlined text-primary opacity-30" style={{ fontSize: '64px' }}>edit_note</span>
+              <div className="w-2/5 bg-primary/5 flex items-center justify-center">
+                <span className="material-symbols-outlined text-primary/20" style={{ fontSize: '64px' }}>edit_note</span>
               </div>
-              <div className="w-3/5 p-8 flex flex-col justify-between">
+              <div className="w-3/5 p-5 flex flex-col justify-between">
                 <div>
-                  <span className="bg-primary text-on-primary px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">
-                    Intensive
-                  </span>
-                  <h5 className="text-headline-md font-bold mt-4 mb-2">IELTS Writing Task 2 Masterclass</h5>
-                  <p className="text-body-sm text-secondary">
-                    An in-depth analysis of the 10 most common essay types with an expert instructor.
-                  </p>
+                  <span className="inline-block bg-primary text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Intensive</span>
+                  <h3 className="text-[13.5px] font-bold text-on-surface mt-2 mb-1">IELTS Writing Task 2 Masterclass</h3>
+                  <p className="text-[12px] text-secondary">An in-depth analysis of the 10 most common essay types.</p>
                 </div>
-                <div className="mt-6 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="material-symbols-outlined text-ai-purple">schedule</span>
-                    <span className="text-body-sm font-bold">12/20 lessons</span>
-                  </div>
-                  <button className="p-2 border border-outline-variant rounded-lg hover:bg-primary hover:text-on-primary transition-all">
-                    <span className="material-symbols-outlined">arrow_forward</span>
+                <div className="flex items-center justify-between mt-4">
+                  <span className="text-[12px] text-secondary font-medium">12 / 20 lessons</span>
+                  <button className="p-1.5 border border-outline-variant rounded-lg hover:bg-primary hover:text-white hover:border-primary transition-colors">
+                    <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>arrow_forward</span>
                   </button>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Small card */}
-          <div className="bg-surface-container-lowest border border-outline-variant p-8 rounded-xl flex flex-col justify-between hover:bg-surface-container-low cursor-pointer transition-colors">
+          <div className="bg-white border border-outline-variant rounded-xl p-5 flex flex-col justify-between hover:shadow-sm transition-shadow cursor-pointer">
             <div>
-              <div className="w-12 h-12 bg-surface-container-high rounded-xl flex items-center justify-center mb-6 border border-outline-variant">
-                <span className="material-symbols-outlined text-primary">menu_book</span>
+              <div className="w-9 h-9 bg-primary/8 rounded-xl flex items-center justify-center mb-3">
+                <span className="material-symbols-outlined text-primary" style={{ fontSize: '18px' }}>menu_book</span>
               </div>
-              <h5 className="text-headline-sm font-bold mb-2">Reading: True/False/Not Given</h5>
-              <p className="text-body-sm text-secondary">Tips for spotting the most common information traps.</p>
+              <h3 className="text-[13px] font-bold text-on-surface mb-1">Reading: True/False/Not Given</h3>
+              <p className="text-[12px] text-secondary">Tips for spotting information traps.</p>
             </div>
-            <div className="mt-8">
-              <div className="w-full bg-surface-container-high h-2 rounded-full mb-3 overflow-hidden">
-                <div className="bg-primary h-full w-[45%]" />
+            <div className="mt-4">
+              <div className="h-1 bg-outline-variant rounded-full overflow-hidden mb-2">
+                <div className="h-full bg-primary w-[45%]" />
               </div>
-              <div className="flex justify-between items-center">
-                <span className="text-xs font-bold">45% Complete</span>
-                <span className="material-symbols-outlined text-primary text-xl hover:text-ai-purple transition-colors cursor-pointer">
-                  play_circle
-                </span>
+              <div className="flex items-center justify-between">
+                <span className="text-[12px] font-semibold text-secondary">45%</span>
+                <span className="material-symbols-outlined text-primary hover:text-accent transition-colors cursor-pointer" style={{ fontSize: '22px' }}>play_circle</span>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Recent Activity */}
-      <section className="space-y-stack-md">
-        <h4 className="font-headline-md text-headline-md">Recent Activity</h4>
-        <div className="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
-          <div className="divide-y divide-outline-variant">
+      <div>
+        <h2 className="text-[14px] font-bold text-primary mb-3">Recent Activity</h2>
+        <div className="bg-white border border-outline-variant rounded-xl divide-y divide-outline-variant overflow-hidden">
 
-            <div className="p-6 flex items-center justify-between hover:bg-surface-container-low transition-colors border-l-4 border-ai-purple">
-              <div className="flex items-center gap-6">
-                <div className="w-12 h-12 bg-white border border-outline-variant rounded-full flex items-center justify-center shadow-sm shrink-0">
-                  <span className="material-symbols-outlined text-ai-purple">assignment_turned_in</span>
-                </div>
-                <div>
-                  <h6 className="font-bold text-body-md">Completed Listening Mock Test #4</h6>
-                  <p className="text-body-sm text-secondary">Result: 8.0 - Improved by 0.5 from last time.</p>
-                </div>
-              </div>
-              <div className="text-right shrink-0 ml-4">
-                <span className="font-label-code text-label-code block text-xs">2 HOURS AGO</span>
-                <button className="text-ai-purple font-bold text-sm hover:underline mt-1">View Details</button>
-              </div>
+          <div className="flex items-center gap-4 p-4 hover:bg-surface-container transition-colors border-l-[3px] border-primary">
+            <div className="w-9 h-9 bg-primary/8 rounded-xl flex items-center justify-center shrink-0">
+              <span className="material-symbols-outlined text-primary" style={{ fontSize: '18px' }}>assignment_turned_in</span>
             </div>
-
-            <div className="p-6 flex items-center justify-between hover:bg-surface-container-low transition-colors">
-              <div className="flex items-center gap-6">
-                <div className="w-12 h-12 bg-white border border-outline-variant rounded-full flex items-center justify-center shadow-sm shrink-0">
-                  <span className="material-symbols-outlined text-primary">forum</span>
-                </div>
-                <div>
-                  <h6 className="font-bold text-body-md">Submitted Writing Task 1</h6>
-                  <p className="text-body-sm text-secondary">Awaiting feedback and grading from your teacher.</p>
-                </div>
-              </div>
-              <div className="text-right shrink-0 ml-4">
-                <span className="font-label-code text-label-code block text-xs">YESTERDAY</span>
-                <span className="inline-block px-3 py-1 bg-surface-container-high rounded-full text-[10px] font-bold mt-1">
-                  PENDING
-                </span>
-              </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-[13px] font-semibold text-on-surface">Completed Listening Mock Test #4</p>
+              <p className="text-[12px] text-secondary">Result: 8.0 — Improved by 0.5 from last time.</p>
             </div>
-
-            <div className="p-6 flex items-center justify-between hover:bg-surface-container-low transition-colors">
-              <div className="flex items-center gap-6">
-                <div className="w-12 h-12 bg-white border border-outline-variant rounded-full flex items-center justify-center shadow-sm shrink-0">
-                  <span className="material-symbols-outlined text-primary">local_fire_department</span>
-                </div>
-                <div>
-                  <h6 className="font-bold text-body-md">Reached a 7-day study streak</h6>
-                  <p className="text-body-sm text-secondary">You're doing great! Keep up the momentum.</p>
-                </div>
-              </div>
-              <div className="text-right shrink-0 ml-4">
-                <span className="font-label-code text-label-code block text-xs">3 DAYS AGO</span>
-                <span className="material-symbols-outlined text-orange-500">stars</span>
-              </div>
+            <div className="text-right shrink-0">
+              <p className="text-[10px] text-secondary uppercase tracking-wider">2 hours ago</p>
+              <button className="text-[12px] font-semibold text-primary hover:underline mt-0.5">View</button>
             </div>
-
           </div>
+
+          <div className="flex items-center gap-4 p-4 hover:bg-surface-container transition-colors">
+            <div className="w-9 h-9 bg-primary/8 rounded-xl flex items-center justify-center shrink-0">
+              <span className="material-symbols-outlined text-primary" style={{ fontSize: '18px' }}>forum</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-[13px] font-semibold text-on-surface">Submitted Writing Task 1</p>
+              <p className="text-[12px] text-secondary">Awaiting feedback and grading.</p>
+            </div>
+            <div className="text-right shrink-0">
+              <p className="text-[10px] text-secondary uppercase tracking-wider">Yesterday</p>
+              <span className="inline-block text-[10px] font-bold px-2 py-0.5 rounded-full bg-accent/15 text-primary mt-0.5">PENDING</span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-4 p-4 hover:bg-surface-container transition-colors">
+            <div className="w-9 h-9 bg-accent/10 rounded-xl flex items-center justify-center shrink-0">
+              <span className="material-symbols-outlined text-accent" style={{ fontSize: '18px' }}>local_fire_department</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-[13px] font-semibold text-on-surface">Reached a 7-day study streak</p>
+              <p className="text-[12px] text-secondary">You're doing great! Keep up the momentum.</p>
+            </div>
+            <div className="text-right shrink-0">
+              <p className="text-[10px] text-secondary uppercase tracking-wider">3 days ago</p>
+              <span className="material-symbols-outlined text-accent mt-0.5" style={{ fontSize: '18px', fontVariationSettings: "'FILL' 1" }}>stars</span>
+            </div>
+          </div>
+
         </div>
-        <div className="text-center pt-4">
-          <button className="font-label-code text-label-code text-primary border-b border-outline-variant hover:text-ai-purple hover:border-ai-purple transition-all">
-            VIEW ALL ACTIVITY
-          </button>
+        <div className="text-center mt-3">
+          <button className="text-[12.5px] font-semibold text-primary hover:underline">View all activity</button>
         </div>
-      </section>
+      </div>
 
     </div>
   );

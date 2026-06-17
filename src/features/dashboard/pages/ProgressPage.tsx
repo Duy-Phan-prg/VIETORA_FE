@@ -23,15 +23,15 @@ export default function ProgressPage() {
       {/* Header */}
       <div className="flex justify-between items-end">
         <div>
-          <h1 className="text-[24px] font-bold text-primary mb-1">Learning Progress</h1>
-          <p className="text-[14px] text-secondary">An analysis of your study results over the last 30 days.</p>
+          <h1 className="text-[22px] font-bold text-[#1e3a5f] mb-1">Learning Progress</h1>
+          <p className="text-[13px] text-secondary">Phân tích kết quả học tập 30 ngày qua.</p>
         </div>
         <div className="flex gap-2">
-          <button className="px-4 py-2 bg-surface-container-high rounded-xl text-[13px] font-medium hover:bg-surface-variant transition-colors flex items-center gap-2">
+          <button className="px-4 py-2 bg-white border border-outline-variant rounded-xl text-[13px] font-medium hover:bg-surface-container transition-colors flex items-center gap-2 text-secondary">
             <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>calendar_today</span>
             Last 30 days
           </button>
-          <button className="px-4 py-2 bg-primary text-on-primary rounded-xl text-[13px] font-medium hover:opacity-90 transition-opacity flex items-center gap-2">
+          <button className="px-4 py-2 bg-[#1e3a5f] text-white rounded-xl text-[13px] font-medium hover:bg-[#162d4a] transition-colors flex items-center gap-2">
             <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>download</span>
             Export Report
           </button>
@@ -39,97 +39,99 @@ export default function ProgressPage() {
       </div>
 
       {/* Row 1: Chart + Skills */}
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '24px' }}>
+      <div className="grid gap-6" style={{ gridTemplateColumns: '2fr 1fr' }}>
 
         {/* Bar chart */}
         <div className="bg-white border border-outline-variant rounded-xl p-6">
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-[18px] font-bold">Trend Chart</h2>
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-[16px] font-bold text-[#1e3a5f]">Trend Chart</h2>
             <div className="flex items-center gap-2">
-              <div className="w-2.5 h-2.5 bg-primary rounded-full" />
+              <div className="w-2.5 h-2.5 bg-[#1e3a5f] rounded-full" />
               <span className="text-[11px] text-secondary uppercase tracking-wider">Average Score</span>
             </div>
           </div>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'flex-end', gap: '6px', height: '180px' }}>
-              {TREND_BARS.map((h, i) => (
-                <div key={i} className="cursor-pointer transition-all" style={{
-                  flex: 1,
-                  height: `${h}%`,
-                  borderRadius: '4px 4px 0 0',
-                  backgroundColor: i === 5 ? '#000000' : '#e2e2e7',
-                }} />
-              ))}
-            </div>
-            <div className="flex justify-between text-[10px] text-secondary mt-2">
-              <span>Week 1</span><span>Week 2</span><span>Week 3</span><span>Week 4</span>
-            </div>
+          <div style={{ display: 'flex', alignItems: 'flex-end', gap: '6px', height: '160px' }}>
+            {TREND_BARS.map((h, i) => (
+              <div key={i} style={{
+                flex: 1,
+                height: `${h}%`,
+                borderRadius: '4px 4px 0 0',
+                background: i === 5 ? '#1e3a5f' : '#e2e8f0',
+                transition: 'background 0.15s',
+              }} />
+            ))}
+          </div>
+          <div className="flex justify-between text-[10px] text-secondary mt-2">
+            <span>Week 1</span><span>Week 2</span><span>Week 3</span><span>Week 4</span>
           </div>
         </div>
 
         {/* Skills target */}
         <div className="bg-white border border-outline-variant rounded-xl p-6 flex flex-col">
-          <h2 className="text-[18px] font-bold mb-6">Target Skills</h2>
+          <h2 className="text-[16px] font-bold text-[#1e3a5f] mb-4">Target Skills</h2>
           <div className="flex-1 flex items-center justify-center">
             <div className="relative flex items-center justify-center"
-              style={{ width: '176px', height: '176px', borderRadius: '50%', border: '4px solid #ededf2' }}>
-              <div className="absolute rounded-full border border-outline-variant" style={{ inset: '16px', opacity: 0.3 }} />
-              <div className="absolute rounded-full border border-outline-variant" style={{ inset: '40px', opacity: 0.3 }} />
-              <span className="material-symbols-outlined absolute text-primary" style={{ fontSize: '20px', top: '-14px' }}>headphones</span>
-              <span className="material-symbols-outlined absolute text-primary" style={{ fontSize: '20px', right: '-18px' }}>record_voice_over</span>
-              <span className="material-symbols-outlined absolute text-primary" style={{ fontSize: '20px', bottom: '-14px' }}>book</span>
-              <span className="material-symbols-outlined absolute text-primary" style={{ fontSize: '20px', left: '-14px' }}>edit</span>
+              style={{ width: '164px', height: '164px', borderRadius: '50%', border: '3px solid #e2e8f0' }}>
+              <div className="absolute rounded-full" style={{ inset: '16px', border: '1px solid #e2e8f0' }} />
+              <span className="material-symbols-outlined absolute text-[#1e3a5f]" style={{ fontSize: '18px', top: '-12px' }}>headphones</span>
+              <span className="material-symbols-outlined absolute text-[#1e3a5f]" style={{ fontSize: '18px', right: '-16px' }}>record_voice_over</span>
+              <span className="material-symbols-outlined absolute text-[#1e3a5f]" style={{ fontSize: '18px', bottom: '-12px' }}>book</span>
+              <span className="material-symbols-outlined absolute text-[#1e3a5f]" style={{ fontSize: '18px', left: '-12px' }}>edit</span>
               <div className="text-center">
-                <span className="text-[28px] font-bold block leading-none">7.5</span>
+                <span className="text-[28px] font-bold text-[#1e3a5f] block leading-none">7.5</span>
                 <span className="text-[10px] text-secondary uppercase tracking-wider">OVERALL</span>
               </div>
             </div>
           </div>
-          <div className="mt-4 space-y-2">
-            <div className="flex justify-between text-[13px]">
+          <div className="mt-4 space-y-2 border-t border-outline-variant pt-4">
+            <div className="flex justify-between text-[12.5px]">
               <span className="text-secondary">Almost There</span>
-              <span className="font-semibold">Reading (8.0)</span>
+              <span className="font-semibold text-[#1e3a5f]">Reading (8.0)</span>
             </div>
-            <div className="flex justify-between text-[13px]">
-              <span className="text-secondary">Needs Improvement</span>
-              <span className="font-semibold">Writing (6.5)</span>
+            <div className="flex justify-between text-[12.5px]">
+              <span className="text-secondary">Needs Work</span>
+              <span className="font-semibold text-[#f6b93b]">Writing (6.5)</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Row 2: Strengths + Weaknesses */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-        <div className="bg-white border border-outline-variant rounded-xl p-8">
-          <div className="flex items-center gap-2 mb-6">
-            <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#16a34a' }}>check_circle</span>
-            <h2 className="text-[18px] font-bold">Strengths</h2>
+      <div className="grid grid-cols-2 gap-6">
+        <div className="bg-white border border-outline-variant rounded-xl p-6">
+          <div className="flex items-center gap-2 mb-5">
+            <div className="w-7 h-7 rounded-lg bg-[#1e3a5f]/10 flex items-center justify-center">
+              <span className="material-symbols-outlined text-[#1e3a5f]" style={{ fontSize: '16px', fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+            </div>
+            <h2 className="text-[15px] font-bold text-[#1e3a5f]">Strengths</h2>
           </div>
           <ul className="space-y-4">
             {STRENGTHS.map(({ title, desc }) => (
               <li key={title} className="flex items-start gap-3">
-                <div className="mt-1.5 w-1.5 h-1.5 bg-primary rounded-full shrink-0" />
+                <div className="mt-2 w-1.5 h-1.5 bg-[#1e3a5f] rounded-full shrink-0" />
                 <div>
-                  <p className="font-semibold text-[15px]">{title}</p>
-                  <p className="text-[13px] text-secondary mt-0.5">{desc}</p>
+                  <p className="font-semibold text-[13.5px] text-[#1e3a5f]">{title}</p>
+                  <p className="text-[12px] text-secondary mt-0.5">{desc}</p>
                 </div>
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="bg-white border border-outline-variant rounded-xl p-8">
-          <div className="flex items-center gap-2 mb-6">
-            <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#f97316' }}>error</span>
-            <h2 className="text-[18px] font-bold">Areas to Improve</h2>
+        <div className="bg-white border border-outline-variant rounded-xl p-6">
+          <div className="flex items-center gap-2 mb-5">
+            <div className="w-7 h-7 rounded-lg bg-[#f6b93b]/15 flex items-center justify-center">
+              <span className="material-symbols-outlined text-[#f6b93b]" style={{ fontSize: '16px', fontVariationSettings: "'FILL' 1" }}>error</span>
+            </div>
+            <h2 className="text-[15px] font-bold text-[#1e3a5f]">Areas to Improve</h2>
           </div>
           <ul className="space-y-4">
             {WEAKNESSES.map(({ title, desc }) => (
               <li key={title} className="flex items-start gap-3">
-                <div className="mt-1.5 w-1.5 h-1.5 bg-primary rounded-full shrink-0" />
+                <div className="mt-2 w-1.5 h-1.5 bg-[#f6b93b] rounded-full shrink-0" />
                 <div>
-                  <p className="font-semibold text-[15px]">{title}</p>
-                  <p className="text-[13px] text-secondary mt-0.5">{desc}</p>
+                  <p className="font-semibold text-[13.5px] text-[#1e3a5f]">{title}</p>
+                  <p className="text-[12px] text-secondary mt-0.5">{desc}</p>
                 </div>
               </li>
             ))}
@@ -139,53 +141,51 @@ export default function ProgressPage() {
 
       {/* Row 3: Recent Tests */}
       <div className="bg-white border border-outline-variant rounded-xl overflow-hidden">
-        <div className="px-6 py-5 border-b border-outline-variant flex justify-between items-center">
-          <h2 className="text-[18px] font-bold">Recent Practice History</h2>
-          <a href="#" className="text-[13px] text-primary font-medium flex items-center gap-1 hover:underline">
+        <div className="px-6 py-4 border-b border-outline-variant flex justify-between items-center">
+          <h2 className="text-[15px] font-bold text-[#1e3a5f]">Recent Practice History</h2>
+          <a href="#" className="text-[12.5px] text-[#1e3a5f] font-medium flex items-center gap-1 hover:underline">
             View All
-            <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>arrow_forward</span>
+            <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>arrow_forward</span>
           </a>
         </div>
-        <div className="overflow-x-auto">
-          <table className="w-full text-left">
-            <thead>
-              <tr className="bg-surface-container">
-                {['TEST', 'DATE', 'SCORE', 'STATUS', ''].map(col => (
-                  <th key={col} className="px-6 py-3 text-[11px] font-semibold text-secondary uppercase tracking-wider">{col}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {RECENT_TESTS.map(({ name, date, score, done }, i) => (
-                <tr key={name} className={`text-[14px] hover:bg-surface-container-low transition-colors ${i > 0 ? 'border-t border-outline-variant' : ''}`}>
-                  <td className="px-6 py-4 font-semibold">{name}</td>
-                  <td className="px-6 py-4 text-secondary">{date}</td>
-                  <td className="px-6 py-4">
-                    <span className="px-3 py-1 bg-surface-container-highest rounded text-[13px] font-bold">{score}</span>
-                  </td>
-                  <td className="px-6 py-4">
-                    {done ? (
-                      <span className="flex items-center gap-2 text-[13px]" style={{ color: '#16a34a' }}>
-                        <span className="w-2 h-2 rounded-full inline-block" style={{ background: '#16a34a' }} />
-                        Completed
-                      </span>
-                    ) : (
-                      <span className="flex items-center gap-2 text-[13px] text-secondary">
-                        <span className="w-2 h-2 bg-outline rounded-full inline-block" />
-                        Grading
-                      </span>
-                    )}
-                  </td>
-                  <td className="px-6 py-4 text-right">
-                    <button className="text-secondary hover:text-primary transition-colors">
-                      <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>{done ? 'visibility' : 'edit'}</span>
-                    </button>
-                  </td>
-                </tr>
+        <table className="w-full text-left">
+          <thead>
+            <tr className="bg-[#f8fafc]">
+              {['TEST', 'DATE', 'SCORE', 'STATUS', ''].map(col => (
+                <th key={col} className="px-6 py-3 text-[10.5px] font-semibold text-secondary uppercase tracking-wider">{col}</th>
               ))}
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </thead>
+          <tbody>
+            {RECENT_TESTS.map(({ name, date, score, done }, i) => (
+              <tr key={name} className={`text-[13px] hover:bg-[#f8fafc] transition-colors ${i > 0 ? 'border-t border-outline-variant' : ''}`}>
+                <td className="px-6 py-4 font-medium text-[#1e3a5f]">{name}</td>
+                <td className="px-6 py-4 text-secondary">{date}</td>
+                <td className="px-6 py-4">
+                  <span className="px-2.5 py-1 bg-[#1e3a5f]/8 text-[#1e3a5f] rounded-lg text-[12px] font-bold">{score}</span>
+                </td>
+                <td className="px-6 py-4">
+                  {done ? (
+                    <span className="flex items-center gap-1.5 text-[12px] text-[#1e3a5f] font-medium">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#1e3a5f] inline-block" />
+                      Completed
+                    </span>
+                  ) : (
+                    <span className="flex items-center gap-1.5 text-[12px] text-[#f6b93b] font-medium">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#f6b93b] inline-block" />
+                      Grading
+                    </span>
+                  )}
+                </td>
+                <td className="px-6 py-4 text-right">
+                  <button className="text-secondary hover:text-[#1e3a5f] transition-colors">
+                    <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>{done ? 'visibility' : 'edit'}</span>
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
     </div>
