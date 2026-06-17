@@ -67,8 +67,8 @@ export default function ChatWidget({ open, onClose }: ChatWidgetProps) {
     >
       {/* Header */}
       <div className="flex items-center gap-3 px-5 py-4 border-b border-outline-variant">
-        <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center border border-outline-variant">
-          <img src={logo} alt="Vietora" className="w-full h-full object-cover" style={{ transform: 'scale(2)' }} />
+        <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center border border-outline-variant bg-white">
+          <img src={logo} alt="Vietora" className="w-full h-full object-contain" />
         </div>
         <div>
           <p className="text-[13px] font-semibold text-on-surface leading-tight">Vietora AI</p>
@@ -87,8 +87,8 @@ export default function ChatWidget({ open, onClose }: ChatWidgetProps) {
         {messages.map(({ id, role, text }) => (
           <div key={id} className={`flex ${role === 'user' ? 'justify-end' : 'justify-start'}`}>
             {role === 'ai' && (
-              <div className="w-6 h-6 rounded-full overflow-hidden flex items-center justify-center shrink-0 mr-2 mt-0.5 border border-outline-variant">
-                <img src={logo} alt="Vietora" className="w-full h-full object-cover" style={{ transform: 'scale(2)' }} />
+              <div className="w-6 h-6 rounded-full overflow-hidden flex items-center justify-center shrink-0 mr-2 mt-0.5 border border-outline-variant bg-white">
+                <img src={logo} alt="Vietora" className="w-full h-full object-contain" />
               </div>
             )}
             <div className={`max-w-[78%] px-4 py-2.5 rounded-2xl text-[13px] leading-relaxed ${
