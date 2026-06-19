@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../contexts/LanguageContext';
-import logo from '../../assets/logo/vietora-logo.png';
 
 export default function Header() {
   const { t } = useLanguage();
@@ -9,9 +8,6 @@ export default function Header() {
     <>
     <nav className="navbar">
       <Link to="/" className="nav-logo">
-        <span className="logo-badge">
-          <img src={logo} alt="Vietora" className="logo-mark" />
-        </span>
         <span className="brand-wordmark">Vietora</span>
       </Link>
 

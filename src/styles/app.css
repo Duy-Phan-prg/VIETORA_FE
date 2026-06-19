@@ -560,7 +560,7 @@ html {
 }
 
 .cat-float-wrapper:hover {
-  transform: scale(1.08);
+  transform: scale(1.00);
 }
 
 .cat-float-wrapper .cat-tooltip {
@@ -599,8 +599,8 @@ html {
 }
 
 .chatbot-img {
-  width: 100%;
-  height: 100%;
+  width: 120%;
+  height: 120%;
   object-fit: contain;
 }
 
@@ -863,8 +863,8 @@ html {
 
 /* Logo */
 .float-btn-logo {
-  width: 150%;
-  height: 150%;
+  width: 120%;
+  height: 120%;
   object-fit: cover; 
 }
 /* ─── Responsive ─────────────────────────────────────── */
