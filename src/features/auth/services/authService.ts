@@ -6,6 +6,6 @@ export const authService = {
     api.post<LoginResponse>('/api/auth/login', data).then((r) => r.data),
 
   logout: () => {
-    localStorage.removeItem('vitora_token');
+    localStorage.removeItem('vietora_token');
   },
 };
